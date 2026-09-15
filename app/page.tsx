@@ -29,26 +29,20 @@ export const metadata: Metadata = {
       },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Helix AI Orchestrator",
-    description:
-      "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision. Automate complex workflows, analyze real-time data, and scale effortlessly.",
-    images: ["/og-image.png"],
-    creator: "@helixai",
-  },
 };
 
-export default function HomePage() {
+export default function Home() {
   return (
     <>
       <Navigation />
-      <Hero />
-      <LogoCloud />
-      <Features />
-      <Workflow />
-      <HowItWorks />
-      <Testimonials />
+      <main>
+        <Hero />
+        <LogoCloud />
+        <Features />
+        <Workflow />
+        <HowItWorks />
+        <Testimonials />
+      </main>
     </>
   );
 }

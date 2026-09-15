@@ -1,4 +1,5 @@
 "use client";
+// @helix:story USER-344000
 
 import { useEffect, useRef, useState } from "react";
 
@@ -18,13 +19,13 @@ const logos: LogoItem[] = [
   { name: "CodeCraft", href: "https://codecraft.dev" },
 ];
 
-export default function LogoCloud() {
+export default function LogoCloud(): JSX.Element {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
+      (entries: IntersectionObserverEntry[]) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisible(true);
@@ -45,23 +46,23 @@ export default function LogoCloud() {
   return (
     <section
       ref={sectionRef}
-      className={`py-16 transition-opacity duration-700 ${
-        visible ? "opacity-100" : "opacity-0"
+      className={`py-16 transition-all duration-1000 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
-      aria-label="Trusted by companies"
+      aria-label="Trusted by"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <p className="text-sm font-medium text-ink-500 uppercase tracking-wider mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-widest mb-8">
           Trusted by leading teams
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center justify-items-center">
           {logos.map((logo) => (
             <a
               key={logo.name}
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-ink-400 hover:text-ink-200 transition-colors text-lg font-semibold"
+              className="text-gray-600 hover:text-gray-300 transition-colors duration-200 font-semibold text-lg"
             >
               {logo.name}
             </a>

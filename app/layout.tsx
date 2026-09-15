@@ -1,10 +1,11 @@
 /// <reference types="next" />
+/// <reference types="react" />
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { metadata } from "./metadata";
 
-// @helix:story USER-491000
+// @helix:story USER-870000
 export { metadata };
 
 export default function RootLayout({
