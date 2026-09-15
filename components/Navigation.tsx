@@ -10,7 +10,7 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-@helix:story USER-26000
+// @helix:story USER-26000
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -37,87 +37,70 @@ export default function Navigation() {
         aria-label="Primary"
       >
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2.5" aria-label="Helix Home">
-          <Sparkles className="w-6 h-6 text-cyan-400" aria-hidden="true" />
-          <span className="text-xl font-bold text-white tracking-tight">
-            Helix
+        <a href="#" className="flex items-center gap-2 group">
+          <Sparkles className="w-6 h-6 text-cyan-400 group-hover:text-cyan-300 transition-colors" aria-hidden="true" />
+          <span className="text-xl font-bold tracking-tight">
+            Helix<span className="text-cyan-400">AI</span>
           </span>
         </a>
 
-        {/* Desktop Navigation */}
+        {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
               {link.label}
             </a>
           ))}
         </div>
 
-        {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* CTA + Mobile Toggle */}
+        <div className="flex items-center gap-4">
           <a
             href="#contact"
-            className="text-sm text-gray-300 hover:text-white transition-colors duration-200"
+            className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-black rounded-full transition-colors"
           >
-            Sign In
+            Get Started <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </a>
-          <a
-            href="#contact"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-semibold rounded-lg transition-colors duration-200"
-          >
-            Get Started
-            <ArrowRight className="w-4 h-4" aria-hidden="true" />
-          </a>
-        </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden p-2 text-white"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? (
-            <X className="w-6 h-6" aria-hidden="true" />
-          ) : (
-            <Menu className="w-6 h-6" aria-hidden="true" />
-          )}
-        </button>
+          <button
+            className="md:hidden p-2 text-gray-300 hover:text-white"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-expanded={mobileOpen}
+            aria-label="Toggle navigation menu"
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </nav>
 
-      {/* Mobile Menu Panel */}
+      {/* Mobile Menu */}
       {mobileOpen && (
         <div className="md:hidden bg-black/95 backdrop-blur-xl border-b border-gray-800/50">
-          <div className="px-4 py-4 space-y-1">
+          <nav className="px-4 py-4 space-y-3" aria-label="Mobile navigation">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="block px-3 py-2.5 text-gray-300 hover:text-white hover:bg-gray-900 rounded-lg transition-colors duration-200"
+                className="block text-base font-medium text-gray-300 hover:text-white transition-colors"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-3 border-t border-gray-800/50 mt-2">
-              <a
-                href="#contact"
-                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-lg transition-colors duration-200"
-                onClick={() => setMobileOpen(false)}
-              >
-                Get Started
-                <ArrowRight className="w-4 h-4" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold bg-cyan-500 hover:bg-cyan-400 text-black rounded-full transition-colors mt-2"
+              onClick={() => setMobileOpen(false)}
+            >
+              Get Started <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </a>
+          </nav>
         </div>
       )}
     </header>
   );
 }
-
-@helix:story USER-26000
