@@ -1,4 +1,5 @@
-import { Metadata } from "next";
+// @helix:story USER-491000
+import type { Metadata } from "next";
 import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
@@ -7,7 +8,6 @@ import HowItWorks from "../components/HowItWorks";
 import Testimonials from "../components/Testimonials";
 import LogoCloud from "../components/LogoCloud";
 
-// @helix:story USER-491000
 export const metadata: Metadata = {
   title: "Helix AI Orchestrator",
   description:
@@ -28,6 +28,13 @@ export const metadata: Metadata = {
         alt: "Helix AI Orchestrator — AI Agent Pipeline Platform",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Helix AI Orchestrator",
+    description:
+      "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision.",
+    images: ["/og-image.png"],
   },
 };
 
