@@ -15,37 +15,37 @@ const features = [
     icon: BrainCircuit,
     title: "Intelligent Agents",
     description:
-      "Build AI agents that understand context, learn from data, and make autonomous decisions.",
+      "Helix builds AI agents that understand context, learns from data, and makes autonomous decisions.",
   },
   {
     icon: ShieldCheck,
     title: "Enterprise Security",
     description:
-      "Bank-grade encryption, role-based access, and audit trails built in from day one.",
+      "Helix provides bank-grade encryption, role-based access, and builds audit trails in from day one.",
   },
   {
     icon: Zap,
     title: "Lightning Fast",
     description:
-      "Optimized runtime with edge deployment ensures sub-second response times globally.",
+      "Helix optimizes runtime with edge deployment ensures sub-second response times globally.",
   },
   {
     icon: BarChart3,
     title: "Real-time Analytics",
     description:
-      "Monitor agent performance, track KPIs, and gain actionable insights through dashboards.",
+      "Helix monitors agent performance, tracks KPIs, so the Product Team gains actionable insights through dashboards.",
   },
   {
     icon: Globe,
     title: "Global Scale",
     description:
-      "Deploy worldwide with automatic scaling, load balancing, and multi-region failover.",
+      "Helix deploys worldwide with automatic scaling, load balancing, and multi-region failover.",
   },
   {
     icon: Layers,
     title: "Composable Architecture",
     description:
-      "Mix and match agents, workflows, and integrations to build exactly what you need.",
+      "Helix mixes and matches agents, workflows, and integrations to build exactly what you need.",
   },
 ];
 

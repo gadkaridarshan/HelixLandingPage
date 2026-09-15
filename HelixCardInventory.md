@@ -1,13 +1,14 @@
 # Card Inventory
 
-- Sep 15, 2026, 2:49:31 PM CDT | USER-550000 | in_progress | deployment | Deploy Landing Page to Vercel
-- Sep 15, 2026, 2:49:22 PM CDT | USER-191000 | in_progress | deployment | Launch on Vercel
+- Sep 15, 2026, 3:04:27 PM CDT | USER-491000 | in_progress | development | Setup Route Metadata
+- Sep 15, 2026, 3:04:02 PM CDT | USER-1789483676436 | done | development | Disable the Testimonial sections from the site
+- Sep 15, 2026, 3:02:36 PM CDT | USER-191000 | in_progress | deployment | Launch on Vercel
+- Sep 15, 2026, 2:53:37 PM CDT | USER-550000 | todo | deployment | Deploy Landing Page to Vercel
 - Sep 15, 2026, 2:49:10 PM CDT | USER-303000 | done | development | Configure Tailwind Tokens
-- Sep 15, 2026, 2:48:04 PM CDT | USER-1789483676436 | todo | development | Disable the Testimonial sections from the site
 - Sep 15, 2026, 2:47:33 PM CDT | USER-861000 | todo | development | Next.js Production Config
 - Sep 15, 2026, 2:45:33 PM CDT | VERCEL-CONFIG-ROOT | in_progress | deployment | Vercel Config File
 - Sep 15, 2026, 2:44:26 PM CDT | USER-870000 | todo | development | Vercel Deploy Config
-- Sep 15, 2026, 2:33:46 PM CDT | USER-818000 | done | development | Verify Production Build
+- Sep 15, 2026, 2:33:43 PM CDT | USER-818000 | done | development | Verify Production Build
 - Sep 15, 2026, 2:27:38 PM CDT | USER-1789478837656 | done | development | Fix the error in description
 - Sep 15, 2026, 2:26:53 PM CDT | USER-802000 | done | development | Create Testimonials Section
 - Sep 15, 2026, 2:25:51 PM CDT | USER-925000 | done | development | Write TrustedBySection component

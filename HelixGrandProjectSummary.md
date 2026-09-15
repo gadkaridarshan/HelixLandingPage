@@ -1,3 +1,3 @@
 # Grand Project Summary
 
-The Helix AI orchestrator marketing landing page is fully built with all section components complete, integrated, and styled per the reference design. RSC import errors were resolved with `"use client"` directives, and the production build was verified successfully. However, deployment to Vercel is still in progress — three deployment cards remain active (Deploy Landing Page to Vercel, Launch on Vercel, Vercel Config File) and three development cards are still todo (Disable Testimonial sections, Next.js Production Config, Vercel Deploy Config). Historical closed_incomplete cards for Vercel config, SEO metadata, dev scripts, and hero section exist but appear superseded by later successful work. The workspace should be treated as not yet fully deployed; confirm `vercel.json` exists at the project root and the live URL is active before marking complete.
+_Will update whenever a card moves to Done._
