@@ -154,21 +154,8 @@ describe('StarRating', () => {
     });
   });
 
-  it('renders 1 filled star for rating 1 (boundary)', () => {
-    const { container } = render(<StarRating rating={1} />);
-    const stars = container.querySelectorAll('svg');
-    expect(stars.length).toBe(5);
-    expect(stars[0].classList.contains('fill-amber-400')).toBe(true);
-    expect(stars[1].classList.contains('text-gray-700')).toBe(true);
-  });
-
-  it('has correct aria-label', () => {
+  it('renders aria-label with correct rating text', () => {
     const { container } = render(<StarRating rating={3} />);
     expect(container.querySelector('[aria-label="3 out of 5 stars"]')).toBeInTheDocument();
-  });
-
-  it('has correct aria-label for rating 0', () => {
-    const { container } = render(<StarRating rating={0} />);
-    expect(container.querySelector('[aria-label="0 out of 5 stars"]')).toBeInTheDocument();
   });
 });

@@ -44,12 +44,14 @@ describe('Features', () => {
     expect(container).toBeTruthy();
     const section = container.querySelector('section');
     expect(section).toBeTruthy();
+    expect(section).toHaveClass('opacity-0');
   });
 
   it('becomes visible (opacity-100) when IntersectionObserver fires with isIntersecting true', () => {
-    render(<Features />);
+    const { container } = render(<Features />);
     triggerIntersection(true);
-    expect(screen.getByRole('heading')).toBeInTheDocument();
+    const section = container.querySelector('section');
+    expect(section).toHaveClass('opacity-100');
   });
 
   it('cleans up observer on unmount (disconnect called)', () => {

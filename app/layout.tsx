@@ -5,7 +5,6 @@ import type { ReactNode } from "react";
 import "./globals.css";
 import { metadata } from "./metadata";
 
-// @helix:story USER-870000
 export { metadata };
 
 export default function RootLayout({
