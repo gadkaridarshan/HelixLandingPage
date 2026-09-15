@@ -1,66 +1,44 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import {
-  Brain,
-  Workflow,
-  Activity,
-  Database,
-  ShieldCheck,
-  Gauge,
-  MessageSquare,
-  Zap,
-} from "lucide-react";
-import styles from "./FeaturesSection.module.css";
+import { Workflow, Shield, BarChart3, Plug, Lock, Zap } from "lucide-react";
 
 const features = [
   {
-    icon: Brain,
-    title: "Intelligent Agents",
-    description:
-      "Build AI agents with custom personas, knowledge bases, and reasoning capabilities. Each agent understands its role and executes with precision.",
-  },
-  {
     icon: Workflow,
-    title: "Visual Workflow Builder",
+    title: "Agent Workflows",
     description:
-      "Design complex agent pipelines with a drag-and-drop interface. Add conditional branches, parallel execution, and human-in-the-loop checkpoints.",
+      "Design complex multi-agent workflows with visual drag-and-drop or define via code with our SDK.",
   },
   {
-    icon: Activity,
-    title: "Real-Time Monitoring",
+    icon: Shield,
+    title: "Enterprise Security",
     description:
-      "Track every agent decision, workflow step, and output in real-time. Get instant alerts when anomalies or bottlenecks are detected.",
+      "Bank-grade encryption, role-based access control, and audit logging built in from day one.",
   },
   {
-    icon: Database,
-    title: "Knowledge Integration",
+    icon: BarChart3,
+    title: "Real-time Analytics",
     description:
-      "Connect agents to your data sources — databases, APIs, documents, and web endpoints. Agents retrieve and reason over information dynamically.",
+      "Monitor agent performance with comprehensive dashboards and custom alerting rules.",
   },
   {
-    icon: ShieldCheck,
-    title: "Safety & Guardrails",
+    icon: Plug,
+    title: "Easy Integrations",
     description:
-      "Built-in content filtering, output validation, and compliance checks ensure your agents stay within defined boundaries at all times.",
+      "Connect to your existing stack with 100+ pre-built integrations and RESTful APIs.",
   },
   {
-    icon: Gauge,
-    title: "Performance Analytics",
+    icon: Lock,
+    title: "Data Privacy",
     description:
-      "Measure agent accuracy, latency, and throughput with detailed dashboards. Identify improvement opportunities with actionable insights.",
-  },
-  {
-    icon: MessageSquare,
-    title: "Multi-Agent Collaboration",
-    description:
-      "Enable agents to communicate, share context, and delegate tasks to each other. Orchestrate complex multi-step workflows across teams.",
+      "Full data residency controls and compliance with SOC2, GDPR, and HIPAA standards.",
   },
   {
     icon: Zap,
-    title: "Rapid Deployment",
+    title: "Lightning Fast",
     description:
-      "Ship agent pipelines to production in minutes. One-click deploy with automatic scaling, versioning, and rollback capabilities.",
+      "Optimized runtime engine delivers sub-100ms response times at any scale.",
   },
 ];
 
@@ -71,18 +49,11 @@ export default function FeaturesSection() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
+    if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
@@ -92,38 +63,116 @@ export default function FeaturesSection() {
       className="section"
       id="features"
       aria-label="Features"
+      style={{
+        padding: "6rem 1.5rem",
+        background: "linear-gradient(180deg, #0a0a1e 0%, #0f0f2a 50%, #0a0a1e 100%)",
+      }}
     >
-      <div className="container">
+      <div className="container" style={{ maxWidth: "1280px", margin: "0 auto" }}>
         {/* ---- Section Header ---- */}
         <div
-          className={`${styles.sectionHeader} ${visible ? styles.visible : ""}`}
+          style={{
+            textAlign: "center",
+            marginBottom: "3rem",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(20px)",
+            transition: "opacity 0.6s ease, transform 0.6s ease",
+          }}
         >
-          <span className="section-badge">Features</span>
-          <h2 className="section-title">Everything you need to build</h2>
-          <h2 className={`${styles.sectionTitleGradient} ${visible ? styles.visible : ""}`}>
-            intelligent agents
+          <span
+            style={{
+              display: "inline-block",
+              fontSize: "0.875rem",
+              fontWeight: 600,
+              color: "#a78bfa",
+              textTransform: "uppercase",
+              letterSpacing: "0.08em",
+              marginBottom: "0.75rem",
+            }}
+          >
+            Features
+          </span>
+          <h2
+            style={{
+              fontSize: "clamp(1.75rem, 4vw, 2.5rem)",
+              fontWeight: 700,
+              color: "#ffffff",
+              marginBottom: "1rem",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Everything You Need to Scale
           </h2>
-          <p className="section-subtitle">
-            Helix provides a complete toolkit for designing, deploying, and
-            managing AI agent pipelines at any scale.
+          <p
+            style={{
+              fontSize: "1.125rem",
+              color: "#94a3b8",
+              maxWidth: "640px",
+              margin: "0 auto",
+              lineHeight: "1.6",
+            }}
+          >
+            Powerful features designed to help you build, deploy, and manage AI agents with confidence.
           </p>
         </div>
 
-        {/* ---- Features Grid ---- */}
-        <div className={styles.featuresGrid}>
+        {/* ---- Feature Cards ---- */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(320px, 1fr))",
+            gap: "1.5rem",
+          }}
+        >
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
-                key={index}
-                className={`${styles.featureCard} ${visible ? styles.visible : ""}`}
-                style={{ transitionDelay: `${index * 80}ms` }}
+                key={feature.title}
+                style={{
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? "translateY(0)" : "translateY(20px)",
+                  transition: `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`,
+                  background: "rgba(255,255,255,0.03)",
+                  border: "1px solid rgba(255,255,255,0.06)",
+                  borderRadius: "12px",
+                  padding: "1.75rem",
+                }}
               >
-                <div className={styles.featureIcon}>
-                  <Icon size={22} strokeWidth={1.5} />
+                <div
+                  style={{
+                    width: "48px",
+                    height: "48px",
+                    borderRadius: "10px",
+                    background: "rgba(167,139,250,0.15)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    marginBottom: "1.25rem",
+                  }}
+                >
+                  <Icon
+                    style={{ color: "#a78bfa", width: "24px", height: "24px" }}
+                    aria-hidden="true"
+                  />
                 </div>
-                <h3 className={styles.featureTitle}>{feature.title}</h3>
-                <p className={styles.featureDescription}>
+                <h3
+                  style={{
+                    fontSize: "1.125rem",
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    marginBottom: "0.5rem",
+                  }}
+                >
+                  {feature.title}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.9375rem",
+                    color: "#94a3b8",
+                    lineHeight: "1.6",
+                  }}
+                >
                   {feature.description}
                 </p>
               </div>

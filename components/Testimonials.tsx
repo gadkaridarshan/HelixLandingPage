@@ -127,81 +127,139 @@ export default function Testimonials() {
             transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
           }}
         >
+          {/* Navigation Arrows */}
+          <button
+            onClick={prev}
+            aria-label="Previous testimonial"
+            style={{
+              position: "absolute",
+              left: "-3rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "rgba(167, 139, 250, 0.15)",
+              border: "1px solid rgba(167, 139, 250, 0.3)",
+              borderRadius: "50%",
+              width: "48px",
+              height: "48px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: "#a78bfa",
+              transition: "background 0.2s ease",
+            }}
+            className="testimonial-nav"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Next testimonial"
+            style={{
+              position: "absolute",
+              right: "-3rem",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "rgba(167, 139, 250, 0.15)",
+              border: "1px solid rgba(167, 139, 250, 0.3)",
+              borderRadius: "50%",
+              width: "48px",
+              height: "48px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: "#a78bfa",
+              transition: "background 0.2s ease",
+            }}
+            className="testimonial-nav"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          {/* Card */}
           <div
             style={{
-              background: "rgba(255,255,255,0.04)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "1.25rem",
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              borderRadius: "1rem",
               padding: "2.5rem",
               position: "relative",
             }}
           >
-            {/* Quote icon */}
+            {/* Quote Icon */}
             <Quote
+              size={36}
               style={{
-                width: "2.5rem",
-                height: "2.5rem",
-                color: "#7c3aed",
-                opacity: 0.4,
+                color: "rgba(167, 139, 250, 0.4)",
                 marginBottom: "1rem",
               }}
               aria-hidden="true"
             />
 
-            {/* Quote text */}
-            <p
-              key={t.id}
-              style={{
-                fontSize: "1.125rem",
-                color: "rgba(255,255,255,0.85)",
-                lineHeight: 1.7,
-                marginBottom: "1.5rem",
-                animation: `fadeIn 0.4s ease`,
-              }}
-            >
-              "{t.quote}"
-            </p>
-
             {/* Stars */}
-            <div style={{ display: "flex", gap: "0.25rem", marginBottom: "1.25rem" }}>
+            <div
+              style={{
+                display: "flex",
+                gap: "0.25rem",
+                marginBottom: "1.25rem",
+              }}
+              aria-label={`${t.rating} out of 5 stars`}
+            >
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star
                   key={i}
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                    color: i < t.rating ? "#fbbf24" : "rgba(255,255,255,0.15)",
-                    fill: i < t.rating ? "#fbbf24" : "transparent",
-                  }}
-                  aria-hidden="true"
+                  size={18}
+                  fill={i < t.rating ? "#fbbf24" : "transparent"}
+                  stroke={i < t.rating ? "#fbbf24" : "rgba(255,255,255,0.2)"}
                 />
               ))}
             </div>
 
+            {/* Quote Text */}
+            <p
+              style={{
+                fontSize: "1.125rem",
+                lineHeight: 1.7,
+                color: "#e2e8f0",
+                marginBottom: "2rem",
+              }}
+            >
+              &ldquo;{t.quote}&rdquo;
+            </p>
+
             {/* Author */}
-            <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "1rem",
+              }}
+            >
               <div
                 style={{
+                  width: "48px",
+                  height: "48px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, #a78bfa, #7c3aed)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  width: "3rem",
-                  height: "3rem",
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, #7c3aed, #3b82f6)",
-                  fontSize: "1rem",
                   fontWeight: 700,
+                  fontSize: "1rem",
                   color: "#ffffff",
+                  flexShrink: 0,
                 }}
+                aria-hidden="true"
               >
                 {t.avatar}
               </div>
               <div>
                 <div
                   style={{
-                    fontSize: "1rem",
                     fontWeight: 600,
                     color: "#ffffff",
+                    fontSize: "1rem",
                   }}
                 >
                   {t.name}
@@ -209,7 +267,7 @@ export default function Testimonials() {
                 <div
                   style={{
                     fontSize: "0.875rem",
-                    color: "rgba(255,255,255,0.5)",
+                    color: "rgba(255, 255, 255, 0.5)",
                   }}
                 >
                   {t.role}, {t.company}
@@ -218,128 +276,37 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Navigation arrows */}
-          <button
-            onClick={prev}
-            aria-label="Previous testimonial"
-            style={{
-              position: "absolute",
-              top: "50%",
-              left: "-1rem",
-              transform: "translateY(-50%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "2.5rem",
-              height: "2.5rem",
-              borderRadius: "50%",
-              border: "1px solid rgba(255,255,255,0.12)",
-              background: "rgba(10,10,30,0.9)",
-              color: "#ffffff",
-              cursor: "pointer",
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            <ChevronLeft style={{ width: "1.25rem", height: "1.25rem" }} />
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next testimonial"
-            style={{
-              position: "absolute",
-              top: "50%",
-              right: "-1rem",
-              transform: "translateY(-50%)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "2.5rem",
-              height: "2.5rem",
-              borderRadius: "50%",
-              border: "1px solid rgba(255,255,255,0.12)",
-              background: "rgba(10,10,30,0.9)",
-              color: "#ffffff",
-              cursor: "pointer",
-              backdropFilter: "blur(8px)",
-            }}
-          >
-            <ChevronRight style={{ width: "1.25rem", height: "1.25rem" }} />
-          </button>
-
-          {/* Dots */}
+          {/* Dots Indicator */}
           <div
             style={{
               display: "flex",
               justifyContent: "center",
               gap: "0.5rem",
-              marginTop: "1.5rem",
+              marginTop: "2rem",
             }}
+            role="tablist"
+            aria-label="Testimonial navigation"
           >
-            {testimonials.map((_, i) => (
+            {testimonials.map((_, idx) => (
               <button
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                aria-label={`Go to testimonial ${i + 1}`}
+                key={idx}
+                onClick={() => setActiveIndex(idx)}
+                role="tab"
+                aria-selected={idx === activeIndex}
+                aria-label={`Go to testimonial ${idx + 1}`}
                 style={{
-                  width: i === activeIndex ? "1.5rem" : "0.5rem",
-                  height: "0.5rem",
+                  width: idx === activeIndex ? "2rem" : "0.625rem",
+                  height: "0.625rem",
                   borderRadius: "9999px",
-                  border: "none",
                   background:
-                    i === activeIndex ? "#7c3aed" : "rgba(255,255,255,0.2)",
+                    idx === activeIndex ? "#a78bfa" : "rgba(255,255,255,0.2)",
+                  border: "none",
                   cursor: "pointer",
                   transition: "all 0.3s ease",
+                  padding: 0,
                 }}
               />
             ))}
-          </div>
-        </div>
-
-        {/* ---- Company Logos Strip ---- */}
-        <div
-          style={{
-            marginTop: "3.5rem",
-            textAlign: "center",
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(20px)",
-            transition: "opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s",
-          }}
-        >
-          <p
-            style={{
-              fontSize: "0.8125rem",
-              color: "rgba(255,255,255,0.3)",
-              textTransform: "uppercase",
-              letterSpacing: "0.1em",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Powering teams at
-          </p>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "2.5rem",
-              flexWrap: "wrap",
-            }}
-          >
-            {["CloudScale", "DataForge", "NeuralPath", "RapidAPI", "VertexAI"].map(
-              (name) => (
-                <span
-                  key={name}
-                  style={{
-                    fontSize: "1.125rem",
-                    fontWeight: 700,
-                    color: "rgba(255,255,255,0.2)",
-                    letterSpacing: "-0.01em",
-                  }}
-                >
-                  {name}
-                </span>
-              )
-            )}
           </div>
         </div>
       </div>

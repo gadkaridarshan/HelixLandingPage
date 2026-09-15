@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ArrowRight, Play, Zap, Shield, Globe, Cpu } from "lucide-react";
-import styles from "./HeroSection.module.css";
+import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -11,145 +10,76 @@ export default function HeroSection() {
     setMounted(true);
   }, []);
 
-  const orbitingIcons = [
-    { icon: Zap, delay: "0s" },
-    { icon: Shield, delay: "1.2s" },
-    { icon: Globe, delay: "2.4s" },
-    { icon: Cpu, delay: "3.6s" },
-  ];
-
   return (
-    <section className={styles.hero} aria-label="Hero">
-      <div className={styles.heroContainer}>
-        {/* ---- Background Elements ---- */}
-        <div className={styles.background} aria-hidden="true">
-          <div className={styles.gradientOrb1} />
-          <div className={styles.gradientOrb2} />
-          <div className={styles.gridPattern} />
-        </div>
-
-        {/* ---- Floating Orbiting Icons ---- */}
-        <div className={styles.orbitalRing} aria-hidden="true">
-          {orbitingIcons.map(({ icon: Icon, delay }, i) => (
-            <div
-              key={i}
-              className={styles.orbitingIcon}
-              style={{ animationDelay: delay }}
-            >
-              <Icon size={20} strokeWidth={1.5} />
+    <section className="hero-section" aria-label="Hero">
+      <div className="hero-section-container">
+        <div className="hero-section-grid">
+          <div className={`hero-section-content ${mounted ? "fade-in" : ""}`}>
+            <div className={`hero-section-badge ${mounted ? "fade-in" : ""}`}>
+              <Sparkles className="hero-section-badge-icon" aria-hidden="true" />
+              <span>Introducing Helix AI Orchestrator</span>
             </div>
-          ))}
-        </div>
 
-        <div className={styles.heroContent}>
-          {/* ---- Badge ---- */}
-          <div
-            className={`${styles.badge} ${mounted ? styles.fadeInUp : ""}`}
-          >
-            <span className={styles.badgeIcon} aria-hidden="true">
-              ⚡
-            </span>
-            <span>Introducing Helix AI Orchestrator</span>
-          </div>
+            <h1 className={`hero-section-title ${mounted ? "fade-in" : ""}`}>
+              Orchestrate AI agents with{" "}
+              <span className="hero-section-title-gradient">unmatched precision</span>
+            </h1>
 
-          {/* ---- Title ---- */}
-          <h1
-            className={`${styles.title} ${mounted ? styles.fadeInUp : ""}`}
-            style={{ transitionDelay: "100ms" }}
-          >
-            Orchestrate AI agents with{" "}
-            <span className={styles.titleGradient}>unmatched precision</span>
-          </h1>
-
-          {/* ---- Subtitle ---- */}
-          <p
-            className={`${styles.subtitle} ${mounted ? styles.fadeInUp : ""}`}
-            style={{ transitionDelay: "200ms" }}
-          >
-            Build, deploy, and manage intelligent AI agent pipelines. Helix
-            gives you the tools to automate complex workflows, analyze real-time
-            data, and scale your operations effortlessly.
-          </p>
-
-          {/* ---- Actions ---- */}
-          <div
-            className={`${styles.actions} ${mounted ? styles.fadeInUp : ""}`}
-            style={{ transitionDelay: "300ms" }}
-          >
-            <a href="#signup" className={`btn btn-primary ${styles.btn}`}>
-              Get Started
-              <ArrowRight className="btn-icon" aria-hidden="true" />
-            </a>
-            <a href="#demo" className={`btn btn-secondary ${styles.btn}`}>
-              <Play className={styles.playIcon} aria-hidden="true" />
-              Watch Demo
-            </a>
-          </div>
-
-          {/* ---- Social Proof ---- */}
-          <div
-            className={`${styles.trust} ${mounted ? styles.fadeInUp : ""}`}
-            style={{ transitionDelay: "400ms" }}
-          >
-            <div className={styles.avatarStack} aria-hidden="true">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className={styles.avatar}>{String.fromCharCode(64 + i)}</div>
-              ))}
-            </div>
-            <p>
-              Trusted by <strong>2,500+</strong> teams building smarter
+            <p className={`hero-section-subtitle ${mounted ? "fade-in" : ""}`}>
+              Build, deploy, and manage intelligent AI agent pipelines. Helix
+              gives you the tools to automate complex workflows, analyze
+              real-time data, and scale your operations effortlessly.
             </p>
-          </div>
-        </div>
 
-        {/* ---- Right Visual ---- */}
-        <div
-          className={`${styles.visual} ${mounted ? styles.fadeInUp : ""}`}
-          style={{ transitionDelay: "350ms" }}
-        >
-          <div className={styles.visualCard}>
-            <div className={styles.cardHeader}>
-              <div className={styles.cardDots}>
-                <span className={styles.dotRed} />
-                <span className={styles.dotYellow} />
-                <span className={styles.dotGreen} />
-              </div>
-              <span className={styles.cardTitle}>Agent Pipeline</span>
+            <div className={`hero-section-actions ${mounted ? "fade-in" : ""}`}>
+              <a href="#signup" className="btn btn-primary">
+                Get Started{" "}
+                <ArrowRight className="btn-icon" aria-hidden="true" />
+              </a>
+              <a href="#demo" className="btn btn-secondary">
+                View Demo
+              </a>
             </div>
-            <div className={styles.cardBody}>
-              <div className={styles.pipelineStep}>
-                <div className={styles.stepIcon}>
-                  <Zap size={14} />
-                </div>
-                <span className={styles.stepLabel}>Define</span>
-                <div className={styles.stepStatus} />
+
+            <div className={`hero-section-stats ${mounted ? "fade-in" : ""}`}>
+              <div className="hero-stat">
+                <span className="hero-stat-value">10K+</span>
+                <span className="hero-stat-label">Active Agents</span>
               </div>
-              <div className={styles.pipelineArrow} aria-hidden="true">
-                <div className={styles.arrowLine} />
-                <div className={styles.arrowHead} />
+              <div className="hero-stat-divider" />
+              <div className="hero-stat">
+                <span className="hero-stat-value">99.9%</span>
+                <span className="hero-stat-label">Uptime</span>
               </div>
-              <div className={styles.pipelineStep}>
-                <div className={styles.stepIcon}>
-                  <Shield size={14} />
-                </div>
-                <span className={styles.stepLabel}>Orchestrate</span>
-                <div className={`${styles.stepStatus} ${styles.statusActive}`} />
-              </div>
-              <div className={styles.pipelineArrow} aria-hidden="true">
-                <div className={styles.arrowLine} />
-                <div className={styles.arrowHead} />
-              </div>
-              <div className={styles.pipelineStep}>
-                <div className={styles.stepIcon}>
-                  <Globe size={14} />
-                </div>
-                <span className={styles.stepLabel}>Deploy</span>
-                <div className={styles.stepStatus} />
+              <div className="hero-stat-divider" />
+              <div className="hero-stat">
+                <span className="hero-stat-value">500+</span>
+                <span className="hero-stat-label">Teams</span>
               </div>
             </div>
-            <div className={styles.cardFooter}>
-              <span className={styles.pulse} aria-hidden="true" />
-              <span className={styles.footerText}>3 agents active · 99.9% uptime</span>
+          </div>
+
+          <div className={`hero-section-visual ${mounted ? "fade-in" : ""}`}>
+            <div className="hero-card hero-card-back" />
+            <div className="hero-card hero-card-front">
+              <div className="hero-card-header">
+                <div className="hero-card-dot" />
+                <div className="hero-card-dot" />
+                <div className="hero-card-dot" />
+              </div>
+              <div className="hero-card-body">
+                <div className="hero-card-line hero-card-line-short" />
+                <div className="hero-card-line" />
+                <div className="hero-card-line hero-card-line-medium" />
+                <div className="hero-card-pipeline">
+                  <div className="hero-card-node" />
+                  <div className="hero-card-connector" />
+                  <div className="hero-card-node hero-card-node-active" />
+                  <div className="hero-card-connector" />
+                  <div className="hero-card-node hero-card-node-active" />
+                </div>
+                <div className="hero-card-line hero-card-line-short" />
+              </div>
             </div>
           </div>
         </div>
