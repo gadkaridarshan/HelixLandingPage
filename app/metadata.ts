@@ -31,13 +31,13 @@ export const metadata: Metadata = {
     siteName: "Helix AI Orchestrator",
     title: "Helix AI Orchestrator",
     description:
-      "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision.",
+      "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision. Automate complex workflows, analyze real-time data, and scale effortlessly.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Helix AI Orchestrator — Orchestrate AI agents with unmatched precision",
+        alt: "Helix AI Orchestrator — Orchestrate AI agents with precision",
       },
     ],
   },
@@ -45,10 +45,13 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Helix AI Orchestrator",
     description:
-      "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision.",
+      "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision. Automate complex workflows, analyze real-time data, and scale effortlessly.",
     images: ["/og-image.png"],
     creator: "@helixai",
     site: "@helixai",
+  },
+  alternates: {
+    canonical: "https://helix-ai-orchestrator.vercel.app",
   },
   robots: {
     index: true,
@@ -62,11 +65,6 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "your-google-verification-code",
+    google: "google-verification-token",
   },
-  alternates: {
-    canonical: "https://helix-ai-orchestrator.vercel.app",
-  },
-  category: "technology",
-  manifest: "/site.webmanifest",
 };

@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { metadata } from "./metadata";
 
-// @helix:story USER-925000
+// @helix:story USER-491000
+export { metadata };
+
 export default function RootLayout({
   children,
 }: {
