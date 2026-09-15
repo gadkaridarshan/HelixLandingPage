@@ -1,0 +1,29 @@
+{
+  "metrics": [
+    { "value": "99.9%", "label": "Uptime SLA" },
+    { "value": "10K+", "label": "Developers" },
+    { "value": "500+", "label": "Companies" },
+    { "value": "4.9/5", "label": "User Rating" }
+  ],
+  "testimonials": [
+    {
+      "quote": "Helix transformed how our team deploys AI agents. We ship 10x faster now.",
+      "name": "Sarah Chen",
+      "role": "VP of Engineering",
+      "company": "TechFlow"
+    },
+    {
+      "quote": "The workflow builder is incredibly intuitive. Our onboarding time dropped by 60%.",
+      "name": "Marcus Rivera",
+      "role": "CTO",
+      "company": "DataPulse"
+    },
+    {
+      "quote": "Real-time monitoring and observability gave us confidence to go all-in on Helix.",
+      "name": "Aisha Patel",
+      "role": "Head of Platform",
+      "company": "CloudScale"
+    }
+  ],
+  "partners": ["TechFlow", "DataPulse", "CloudScale", "InnovateLab", "NextGen"]
+}

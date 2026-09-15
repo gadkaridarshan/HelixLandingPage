@@ -2,6 +2,7 @@ import Hero from "./components/Hero";
 import Features from "./components/Features";
 import HowItWorks from "./components/HowItWorks";
 import Workflow from "./components/Workflow";
+import Testimonials from "../components/Testimonials";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <Workflow />
+      <Testimonials />
 
       {/* CTA Section */}
       <section className="section cta-section" id="get-started">
