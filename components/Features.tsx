@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
 import { Brain, Network, Cpu, Layers, GitBranch, Lock, Globe, Code2 } from "lucide-react";
 

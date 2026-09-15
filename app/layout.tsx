@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { metadata } from "./metadata";
 
-export const metadata: Metadata = {
-  title: "Helix AI Orchestrator",
-  description:
-    "Build, deploy, and manage intelligent AI agent pipelines with unmatched precision.",
-};
-
-// @helix:story USER-26000
+// @helix:story USER-925000
 export default function RootLayout({
   children,
 }: {
@@ -15,6 +10,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#000000" />
+        <meta name="color-scheme" content="dark" />
+      </head>
       <body>{children}</body>
     </html>
   );
