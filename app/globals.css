@@ -12,8 +12,6 @@ body {
   background-color: #000;
   color: #fff;
 }
-
-@helix:story USER-26000
 ::selection {
   background-color: rgba(34, 211, 238, 0.3);
   color: #fff;

@@ -2,10 +2,9 @@ import Navigation from "../components/Navigation";
 import Hero from "../components/Hero";
 import Features from "../components/Features";
 import HowItWorks from "../components/HowItWorks";
-import Workflow from "../components/Workflow";
 import Testimonials from "../components/Testimonials";
 
-// @helix:story USER-26000
+// @helix:story USER-44000
 export default function Home() {
   return (
     <div className="min-h-screen bg-black text-white">
@@ -14,7 +13,6 @@ export default function Home() {
         <Hero />
         <Features />
         <HowItWorks />
-        <Workflow />
         <Testimonials />
         <section
           id="contact"

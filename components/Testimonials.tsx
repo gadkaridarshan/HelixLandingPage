@@ -127,187 +127,221 @@ export default function Testimonials() {
             transition: "opacity 0.6s ease 0.2s, transform 0.6s ease 0.2s",
           }}
         >
-          {/* Navigation Arrows */}
-          <button
-            onClick={prev}
-            aria-label="Previous testimonial"
-            style={{
-              position: "absolute",
-              left: "-3rem",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "rgba(167, 139, 250, 0.15)",
-              border: "1px solid rgba(167, 139, 250, 0.3)",
-              borderRadius: "50%",
-              width: "48px",
-              height: "48px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              color: "#a78bfa",
-              transition: "background 0.2s ease",
-            }}
-            className="testimonial-nav"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={next}
-            aria-label="Next testimonial"
-            style={{
-              position: "absolute",
-              right: "-3rem",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "rgba(167, 139, 250, 0.15)",
-              border: "1px solid rgba(167, 139, 250, 0.3)",
-              borderRadius: "50%",
-              width: "48px",
-              height: "48px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              cursor: "pointer",
-              color: "#a78bfa",
-              transition: "background 0.2s ease",
-            }}
-            className="testimonial-nav"
-          >
-            <ChevronRight size={24} />
-          </button>
-
-          {/* Card */}
+          {/* ---- Testimonial Card ---- */}
           <div
             style={{
-              background: "rgba(255, 255, 255, 0.05)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
-              borderRadius: "1rem",
-              padding: "2.5rem",
               position: "relative",
+              background: "rgba(31,31,46,0.5)",
+              border: "1px solid rgba(39,39,42,0.5)",
+              borderRadius: "1rem",
+              padding: "2rem",
             }}
           >
-            {/* Quote Icon */}
             <Quote
-              size={36}
-              style={{
-                color: "rgba(167, 139, 250, 0.4)",
-                marginBottom: "1rem",
-              }}
+              className="w-8 h-8 mb-4"
+              style={{ color: "rgba(167,139,250,0.4)" }}
               aria-hidden="true"
             />
 
-            {/* Stars */}
-            <div
-              style={{
-                display: "flex",
-                gap: "0.25rem",
-                marginBottom: "1.25rem",
-              }}
-              aria-label={`${t.rating} out of 5 stars`}
-            >
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  size={18}
-                  fill={i < t.rating ? "#fbbf24" : "transparent"}
-                  stroke={i < t.rating ? "#fbbf24" : "rgba(255,255,255,0.2)"}
-                />
-              ))}
-            </div>
-
-            {/* Quote Text */}
             <p
               style={{
-                fontSize: "1.125rem",
+                fontSize: "clamp(1rem, 2vw, 1.125rem)",
+                color: "#e4e4e7",
                 lineHeight: 1.7,
-                color: "#e2e8f0",
-                marginBottom: "2rem",
+                marginBottom: "1.5rem",
               }}
             >
               &ldquo;{t.quote}&rdquo;
             </p>
 
-            {/* Author */}
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "1rem",
-              }}
-            >
+            {/* ---- Stars ---- */}
+            <div style={{ display: "flex", gap: "4px", marginBottom: "1.25rem" }}>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Star
+                  key={i}
+                  className="w-5 h-5"
+                  style={{
+                    color: i < t.rating ? "#facc15" : "#27272a",
+                    fill: i < t.rating ? "#facc15" : "transparent",
+                  }}
+                  aria-hidden="true"
+                />
+              ))}
+            </div>
+
+            {/* ---- Author ---- */}
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
               <div
                 style={{
                   width: "48px",
                   height: "48px",
-                  borderRadius: "50%",
-                  background: "linear-gradient(135deg, #a78bfa, #7c3aed)",
+                  borderRadius: "9999px",
+                  background:
+                    "linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  color: "#fff",
                   fontWeight: 700,
-                  fontSize: "1rem",
-                  color: "#ffffff",
+                  fontSize: "0.875rem",
                   flexShrink: 0,
                 }}
-                aria-hidden="true"
               >
                 {t.avatar}
               </div>
               <div>
-                <div
-                  style={{
-                    fontWeight: 600,
-                    color: "#ffffff",
-                    fontSize: "1rem",
-                  }}
-                >
-                  {t.name}
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.875rem",
-                    color: "rgba(255, 255, 255, 0.5)",
-                  }}
-                >
+                <p style={{ fontWeight: 600, color: "#fff" }}>{t.name}</p>
+                <p style={{ fontSize: "0.875rem", color: "#71717a" }}>
                   {t.role}, {t.company}
-                </div>
+                </p>
               </div>
             </div>
+
+            {/* ---- Navigation Arrows ---- */}
+            <button
+              onClick={prev}
+              aria-label="Previous testimonial"
+              style={{
+                position: "absolute",
+                left: "-1.5rem",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "40px",
+                height: "40px",
+                borderRadius: "9999px",
+                background: "#18181b",
+                border: "1px solid #27272a",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#a1a1aa",
+                cursor: "pointer",
+                transition: "color 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#fff";
+                e.currentTarget.style.borderColor = "#3f3f46";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#a1a1aa";
+                e.currentTarget.style.borderColor = "#27272a";
+              }}
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={next}
+              aria-label="Next testimonial"
+              style={{
+                position: "absolute",
+                right: "-1.5rem",
+                top: "50%",
+                transform: "translateY(-50%)",
+                width: "40px",
+                height: "40px",
+                borderRadius: "9999px",
+                background: "#18181b",
+                border: "1px solid #27272a",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#a1a1aa",
+                cursor: "pointer",
+                transition: "color 0.2s, border-color 0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#fff";
+                e.currentTarget.style.borderColor = "#3f3f46";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "#a1a1aa";
+                e.currentTarget.style.borderColor = "#27272a";
+              }}
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
 
-          {/* Dots Indicator */}
+          {/* ---- Dot Indicators ---- */}
           <div
             style={{
               display: "flex",
               justifyContent: "center",
-              gap: "0.5rem",
-              marginTop: "2rem",
+              gap: "8px",
+              marginTop: "1.5rem",
             }}
-            role="tablist"
-            aria-label="Testimonial navigation"
           >
-            {testimonials.map((_, idx) => (
+            {testimonials.map((_, i) => (
               <button
-                key={idx}
-                onClick={() => setActiveIndex(idx)}
-                role="tab"
-                aria-selected={idx === activeIndex}
-                aria-label={`Go to testimonial ${idx + 1}`}
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Go to testimonial ${i + 1}`}
                 style={{
-                  width: idx === activeIndex ? "2rem" : "0.625rem",
-                  height: "0.625rem",
+                  width: i === activeIndex ? "24px" : "10px",
+                  height: "10px",
                   borderRadius: "9999px",
                   background:
-                    idx === activeIndex ? "#a78bfa" : "rgba(255,255,255,0.2)",
+                    i === activeIndex ? "#a78bfa" : "#27272a",
                   border: "none",
                   cursor: "pointer",
-                  transition: "all 0.3s ease",
-                  padding: 0,
+                  transition: "width 0.3s, background 0.3s",
                 }}
               />
             ))}
           </div>
+        </div>
+
+        {/* ---- All Testimonials Grid ---- */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns:
+              "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "1.5rem",
+            marginTop: "3rem",
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(20px)",
+            transition:
+              "opacity 0.6s ease 0.4s, transform 0.6s ease 0.4s",
+          }}
+        >
+          {testimonials.map((item) => (
+            <div
+              key={item.id}
+              style={{
+                background: "rgba(31,31,46,0.3)",
+                border: "1px solid rgba(39,39,42,0.4)",
+                borderRadius: "0.75rem",
+                padding: "1.25rem",
+                textAlign: "center",
+              }}
+            >
+              <div
+                style={{
+                  width: "40px",
+                  height: "40px",
+                  borderRadius: "9999px",
+                  background:
+                    "linear-gradient(135deg, #a78bfa 0%, #22d3ee 100%)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#fff",
+                  fontWeight: 700,
+                  fontSize: "0.75rem",
+                  marginBottom: "0.75rem",
+                }}
+              >
+                {item.avatar}
+              </div>
+              <p style={{ fontWeight: 600, color: "#fff", fontSize: "0.875rem" }}>
+                {item.name}
+              </p>
+              <p style={{ fontSize: "0.75rem", color: "#71717a" }}>
+                {item.role}, {item.company}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>

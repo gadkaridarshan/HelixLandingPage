@@ -10,7 +10,6 @@ const navLinks = [
   { label: "Contact", href: "#contact" },
 ];
 
-// @helix:story USER-26000
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
