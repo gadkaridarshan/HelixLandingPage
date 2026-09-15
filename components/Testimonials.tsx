@@ -1,6 +1,71 @@
 import { useEffect, useRef, useState } from "react";
-import { Quote, Star, TrendingUp, Users, Zap, CheckCircle } from "lucide-react";
-import trustData from "../data/trust-signals.json";
+import { Star, Quote } from "lucide-react";
+
+const testimonials = [
+  {
+    name: "Sarah Chen",
+    role: "VP of Engineering, TechFlow",
+    quote:
+      "Helix transformed how our team builds AI workflows. What used to take weeks of integration work now ships in hours. The orchestration layer is incredibly reliable.",
+    rating: 5,
+  },
+  {
+    name: "Marcus Rivera",
+    role: "CTO, DataPulse",
+    quote:
+      "We went from prototype to production in under a month. The real-time monitoring and observability tools alone saved us countless hours of debugging.",
+    rating: 5,
+  },
+  {
+    name: "Emily Nakamura",
+    role: "Lead AI Researcher, MindForge",
+    quote:
+      "The agent pipeline abstraction is brilliant. Our researchers focus on model quality while Helix handles deployment, scaling, and routing automatically.",
+    rating: 5,
+  },
+];
+
+function TestimonialCard({
+  name,
+  role,
+  quote,
+  rating,
+}: {
+  name: string;
+  role: string;
+  quote: string;
+  rating: number;
+}) {
+  return (
+    <div className="testimonial-card">
+      <Quote className="testimonial-quote-icon" aria-hidden="true" />
+      <p className="testimonial-quote">&ldquo;{quote}&rdquo;</p>
+      <div className="testimonial-stars" aria-label={`${rating} out of 5 stars`}>
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i}
+            className={`testimonial-star ${
+              i < rating ? "testimonial-star-filled" : ""
+            }`}
+            aria-hidden="true"
+          />
+        ))}
+      </div>
+      <div className="testimonial-author">
+        <div className="testimonial-avatar" aria-hidden="true">
+          {name
+            .split(" ")
+            .map((n) => n[0])
+            .join("")}
+        </div>
+        <div>
+          <p className="testimonial-name">{name}</p>
+          <p className="testimonial-role">{role}</p>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Testimonials() {
   const [visible, setVisible] = useState(false);
@@ -16,102 +81,40 @@ export default function Testimonials() {
       },
       { threshold: 0.15 }
     );
+
     if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
+
     return () => observer.disconnect();
   }, []);
-
-  const metrics = trustData.metrics as Array<{ value: string; label: string }>;
-  const testimonials = trustData.testimonials as Array<{
-    quote: string;
-    name: string;
-    role: string;
-    company: string;
-  }>;
-  const partners = trustData.partners as string[];
 
   return (
     <section
       className={`section testimonials-section ${visible ? "fade-in" : ""}`}
       id="testimonials"
       ref={sectionRef}
-      aria-label="Testimonials and Trust Signals"
+      aria-label="Testimonials"
     >
       <div className="container">
-        {/* ---- Header ---- */}
         <div className="section-header">
-          <p className="section-label">Trusted by teams everywhere</p>
-          <h2 className="section-title">
-            Why teams choose <span className="text-gradient">Helix</span>
-          </h2>
+          <h2 className="section-title">Trusted by teams building the future</h2>
           <p className="section-subtitle">
-            See how companies of all sizes rely on Helix to orchestrate their
-            AI agents with confidence.
+            See why engineering leaders choose Helix to orchestrate their AI
+            agents.
           </p>
         </div>
 
-        {/* ---- Metrics Row ---- */}
-        <div className="metrics-row">
-          {metrics.map((metric, index) => (
-            <div
-              key={index}
-              className={`metric-card ${visible ? "metric-fade-in" : ""}`}
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="metric-value">{metric.value}</div>
-              <div className="metric-label">{metric.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* ---- Testimonial Cards ---- */}
         <div className="testimonials-grid">
           {testimonials.map((t, index) => (
-            <blockquote
+            <TestimonialCard
               key={index}
-              className={`testimonial-card ${visible ? "card-fade-in" : ""}`}
-              style={{ animationDelay: `${index * 150}ms` }}
-            >
-              <Quote className="testimonial-quote-icon" aria-hidden="true" />
-              <p className="testimonial-quote">&ldquo;{t.quote}&rdquo;</p>
-              <footer className="testimonial-footer">
-                <div className="testimonial-avatar" aria-hidden="true">
-                  {t.name.charAt(0)}
-                </div>
-                <div className="testimonial-author">
-                  <cite className="testimonial-name">{t.name}</cite>
-                  <span className="testimonial-role">
-                    {t.role} at {t.company}
-                  </span>
-                </div>
-                <div className="testimonial-stars" aria-label="5 out of 5 stars">
-                  <Star className="star-icon" aria-hidden="true" />
-                  <Star className="star-icon" aria-hidden="true" />
-                  <Star className="star-icon" aria-hidden="true" />
-                  <Star className="star-icon" aria-hidden="true" />
-                  <Star className="star-icon" aria-hidden="true" />
-                </div>
-              </footer>
-            </blockquote>
+              name={t.name}
+              role={t.role}
+              quote={t.quote}
+              rating={t.rating}
+            />
           ))}
-        </div>
-
-        {/* ---- Partner Logos ---- */}
-        <div className="partners-section">
-          <p className="partners-label">Trusted by leading companies</p>
-          <div className="partners-row">
-            {partners.map((partner, index) => (
-              <div
-                key={index}
-                className={`partner-logo ${visible ? "partner-fade-in" : ""}`}
-                style={{ animationDelay: `${index * 80}ms` }}
-              >
-                <Zap className="partner-icon" aria-hidden="true" />
-                <span className="partner-name">{partner}</span>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

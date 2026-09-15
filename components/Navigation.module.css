@@ -4,256 +4,183 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  transition: background 0.3s ease, box-shadow 0.3s ease;
   background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .headerScrolled {
-  background: rgba(15, 15, 25, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: rgba(10, 10, 30, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
 }
 
 .nav {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 24px;
-  height: 72px;
+  padding: 0.875rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 32px;
 }
 
-/* ---- Logo ---- */
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.5rem;
   text-decoration: none;
-  color: #fff;
-  flex-shrink: 0;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ffffff;
+  letter-spacing: -0.02em;
 }
 
 .logoIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  width: 2.25rem;
+  height: 2.25rem;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  border-radius: 0.5rem;
+  padding: 0.375rem;
+  flex-shrink: 0;
 }
 
 .logoSpark {
-  width: 20px;
-  height: 20px;
-  color: #fff;
+  color: #ffffff;
+  width: 1.25rem;
+  height: 1.25rem;
 }
 
 .logoText {
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: #fff;
+  background: linear-gradient(135deg, #c4b5fd, #93c5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* ---- Desktop Nav Links ---- */
 .navLinks {
   display: flex;
   align-items: center;
+  gap: 2rem;
   list-style: none;
-  gap: 8px;
   margin: 0;
   padding: 0;
-  flex: 1;
-  justify-content: center;
 }
 
 .navLink {
-  position: relative;
-  padding: 8px 16px;
-  font-size: 0.9375rem;
-  font-weight: 500;
   color: rgba(255, 255, 255, 0.7);
   text-decoration: none;
-  border-radius: 8px;
-  transition: color 0.2s ease, background 0.2s ease;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .navLink:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.navLink:focus-visible {
-  outline: 2px solid #a78bfa;
-  outline-offset: 2px;
-}
-
-/* ---- Actions ---- */
-.actions {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-shrink: 0;
+  color: #ffffff;
 }
 
 .ctaButton {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: #fff;
+  gap: 0.375rem;
+  padding: 0.625rem 1.25rem;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: #ffffff;
   text-decoration: none;
-  background: linear-gradient(135deg, #7c3aed, #6d28d9);
+  border-radius: 0.625rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease, transform 0.2s ease;
   border: none;
-  border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .ctaButton:hover {
+  opacity: 0.9;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
 }
 
-.ctaButton:focus-visible {
-  outline: 2px solid #a78bfa;
-  outline-offset: 2px;
+.btnIcon {
+  width: 1rem;
+  height: 1rem;
 }
 
-.ctaIcon {
-  width: 16px;
-  height: 16px;
-}
-
-.menuButton {
+.mobileToggle {
   display: none;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
+  background: none;
+  border: none;
+  color: #ffffff;
   cursor: pointer;
-  color: #fff;
-  transition: background 0.2s ease;
+  padding: 0.25rem;
 }
 
-.menuButton:hover {
-  background: rgba(255, 255, 255, 0.14);
+.mobileToggleIcon {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-.menuButton:focus-visible {
-  outline: 2px solid #a78bfa;
-  outline-offset: 2px;
-}
-
-.menuIcon {
-  width: 22px;
-  height: 22px;
-}
-
-/* ---- Mobile Menu ---- */
 .mobileMenu {
   display: none;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-}
-
-.mobileMenuOpen {
-  max-height: 360px;
-  opacity: 1;
-  padding-bottom: 24px;
-}
-
-.mobileLinks {
-  list-style: none;
-  margin: 0;
-  padding: 16px 0 0;
-  display: flex;
+  position: fixed;
+  top: 4rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 10, 30, 0.98);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 2rem 1.5rem;
   flex-direction: column;
-  gap: 4px;
+  gap: 1.5rem;
 }
 
 .mobileLink {
-  display: block;
-  padding: 12px 16px;
-  font-size: 1rem;
-  font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  border-radius: 10px;
-  transition: color 0.2s ease, background 0.2s ease;
+  font-size: 1.25rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 .mobileLink:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.mobileLink:focus-visible {
-  outline: 2px solid #a78bfa;
-  outline-offset: 2px;
+  color: #ffffff;
 }
 
 .mobileCta {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  margin-top: 12px;
-  padding: 12px 24px;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 0.625rem;
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
-  text-decoration: none;
-  background: linear-gradient(135deg, #7c3aed, #6d28d9);
-  border-radius: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s ease;
 }
 
 .mobileCta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+  opacity: 0.9;
 }
 
-.mobileCta:focus-visible {
-  outline: 2px solid #a78bfa;
-  outline-offset: 2px;
-}
-
-/* ---- Responsive ---- */
 @media (max-width: 768px) {
-  .navLinks {
-    display: none;
-  }
-
+  .navLinks,
   .ctaButton {
     display: none;
   }
 
-  .menuButton {
+  .mobileToggle {
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobileMenu {
-    display: block;
-  }
-}
-
-@media (min-width: 769px) {
-  .mobileMenu {
-    display: none !important;
+    display: flex;
   }
 }
