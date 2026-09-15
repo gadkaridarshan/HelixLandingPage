@@ -36,8 +36,8 @@ export default function Workflow() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries: IntersectionObserverEntry[]) => {
-        entries.forEach((entry: IntersectionObserverEntry) => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setVisible(true);
           }
@@ -46,63 +46,64 @@ export default function Workflow() {
       { threshold: 0.15 }
     );
 
-    const current = sectionRef.current;
-    if (current) {
-      observer.observe(current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
-
-    return () => {
-      if (current) {
-        observer.unobserve(current);
-      }
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="py-24 bg-black"
-      aria-label="Workflow"
       id="workflow"
+      className="py-24 relative overflow-hidden"
+      aria-label="Workflow"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`text-center mb-16 transition-all duration-1000 ${
+          className={`text-center mb-16 transition-all duration-700 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
-            Workflow in{" "}
-            <span className="text-cyan-400">four simple steps</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+            Powerful{" "}
+            <span className="text-cyan-400">Workflow Engine</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            From connection to execution, Helix guides your agents through a
-            clear, repeatable pipeline.
+            Orchestrate complex agent pipelines with a visual workflow builder
+            designed for production-grade deployments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {workflowSteps.map((step, index) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.title}
-                className={`group p-6 rounded-2xl border border-gray-800/60 bg-gray-900/40 hover:border-cyan-500/30 hover:bg-gray-800/40 transition-all duration-700 ${
+                className={`group p-6 rounded-2xl bg-gray-900/50 border border-gray-800/50 hover:border-cyan-400/30 transition-all duration-500 ${
                   visible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition-colors">
-                  <Icon className="w-6 h-6 text-cyan-400" aria-hidden="true" />
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-cyan-400/10 flex items-center justify-center group-hover:bg-cyan-400/20 transition-colors duration-300">
+                    <Icon
+                      className="w-6 h-6 text-cyan-400"
+                      aria-hidden="true"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors duration-300">
+                      {step.title}
+                    </h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">
-                  {step.title}
-                </h3>
-                <p className="text-gray-400 leading-relaxed">
-                  {step.description}
-                </p>
               </div>
             );
           })}
