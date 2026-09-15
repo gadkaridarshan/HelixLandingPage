@@ -1,12 +1,14 @@
 # Card Inventory
 
-- Sep 15, 2026, 3:54:07 PM CDT | VERCEL-CONFIG-ROOT | in_progress | deployment | vercel.json
+- Sep 15, 2026, 4:04:51 PM CDT | USER-870000 | done | deployment | Vercel Deploy Config
+- Sep 15, 2026, 4:03:43 PM CDT | HELIX-TEST-TYPES-001 | todo | testing | Unit tests for type errors
+- Sep 15, 2026, 4:03:43 PM CDT | HELIX-DEV-TYPES-001 | in_progress | development | Fix TypeScript dependencies
+- Sep 15, 2026, 4:01:52 PM CDT | VERCEL-CONFIG-ROOT | todo | development | app globals d ts
 - Sep 15, 2026, 3:53:55 PM CDT | HELIX-FILE-LOGO | done | development | LogoCloud.tsx fixed types
 - Sep 15, 2026, 3:50:37 PM CDT | HELIX-FILE-FEAT | done | development | Features.tsx fixed types
-- Sep 15, 2026, 3:47:07 PM CDT | USER-870000 | todo | deployment | Vercel Deploy Config
 - Sep 15, 2026, 3:45:56 PM CDT | USER-90000 | closed_incomplete | development | Fix Global JSX Types
 - Sep 15, 2026, 3:45:54 PM CDT | USER-898000 | closed_incomplete | development | Fix TestimonialsSection Types
-- Sep 15, 2026, 3:43:47 PM CDT | USER-344000 | done | development | Fix LogoCloud Features Types
+- Sep 15, 2026, 3:43:41 PM CDT | USER-344000 | done | development | Fix LogoCloud Features Types
 - Sep 15, 2026, 3:29:48 PM CDT | USER-491000 | done | development | Landing Page Metadata
 - Sep 15, 2026, 3:24:16 PM CDT | USER-550000 | done | deployment | Deploy Landing Page to Vercel
 - Sep 15, 2026, 3:18:27 PM CDT | USER-1789485372801 | done | development | Resolve the error in the description

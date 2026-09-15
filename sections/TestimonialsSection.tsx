@@ -47,39 +47,51 @@ const testimonials: TestimonialCardProps[] = [
   },
   {
     id: 4,
-    name: "James Liu",
+    name: "James O'Brien",
     role: "Director of Platform",
-    company: "StreamLine",
-    avatar: "JL",
-    rating: 5,
-    quote:
-      "The agent monitoring dashboard gives us visibility we never had before. We can now proactively address issues before they impact users.",
-  },
-  {
-    id: 5,
-    name: "Elena Rossi",
-    role: "Lead ML Engineer",
     company: "QuantumLab",
-    avatar: "ER",
+    avatar: "JO",
     rating: 5,
     quote:
-      "Helix's SDK made it trivial to define custom agent behaviors. Production deployment took hours, not weeks.",
+      "The autonomous agent scheduling alone saved our team hundreds of hours this quarter. Helix is a force multiplier.",
   },
 ];
 
 function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-1" aria-label={`Rating: ${rating} out of 5`}>
-      {Array.from({ length: 5 }, (_, i) => (
+    <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
         <Star
           key={i}
           className={`w-4 h-4 ${
-            i < rating ? "fill-yellow-400 text-yellow-400" : "text-gray-600"
+            i < rating ? "text-amber-400 fill-amber-400" : "text-gray-700"
           }`}
           aria-hidden="true"
         />
       ))}
     </div>
+  );
+}
+
+function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps }) {
+  return (
+    <article className="glass-card p-6 rounded-xl">
+      <StarRating rating={testimonial.rating} />
+      <blockquote className="mt-4 text-gray-300 text-sm leading-relaxed">
+        "{testimonial.quote}"
+      </blockquote>
+      <div className="mt-4 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-helix-500 to-brand-violet flex items-center justify-center text-white text-xs font-bold">
+          {testimonial.avatar}
+        </div>
+        <div>
+          <p className="text-white text-sm font-medium">{testimonial.name}</p>
+          <p className="text-gray-400 text-xs">
+            {testimonial.role}, {testimonial.company}
+          </p>
+        </div>
+      </div>
+    </article>
   );
 }
 
@@ -113,37 +125,24 @@ export default function TestimonialsSection() {
       className={`py-24 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
+      id="testimonials"
       aria-label="Testimonials"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Trusted by teams</h2>
-          <p className="text-lg text-gray-400">
-            See why engineering teams choose Helix for AI agent orchestration.
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            Trusted by teams building
+            <span className="text-helix-400"> agent pipelines</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            See why engineering leaders choose Helix to orchestrate AI agents at
+            scale.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((testimonial) => (
-            <div
-              key={testimonial.id}
-              className="p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/[0.07] transition-colors"
-            >
-              <StarRating rating={testimonial.rating} />
-              <p className="mt-4 text-gray-300 leading-relaxed">
-                "{testimonial.quote}"
-              </p>
-              <div className="mt-6 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-helix-400 to-brand-violet flex items-center justify-center text-sm font-bold">
-                  {testimonial.avatar}
-                </div>
-                <div>
-                  <div className="font-semibold">{testimonial.name}</div>
-                  <div className="text-sm text-gray-400">
-                    {testimonial.role}, {testimonial.company}
-                  </div>
-                </div>
-              </div>
-            </div>
+            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
           ))}
         </div>
       </div>
