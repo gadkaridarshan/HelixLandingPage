@@ -1,7 +1,7 @@
 "use client";
 // @helix:story USER-344000
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type ReactElement } from "react";
 
 interface LogoItem {
   name: string;
@@ -19,7 +19,7 @@ const logos: LogoItem[] = [
   { name: "CodeCraft", href: "https://codecraft.dev" },
 ];
 
-export default function LogoCloud(): JSX.Element {
+export default function LogoCloud(): ReactElement {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -40,31 +40,33 @@ export default function LogoCloud(): JSX.Element {
       observer.observe(sectionRef.current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className={`py-16 transition-all duration-1000 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-      aria-label="Trusted by"
+      className={`transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}
+      aria-label="Trusted by leading companies"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-widest mb-8">
-          Trusted by leading teams
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <p className="text-center text-sm font-medium text-gray-400 uppercase tracking-wider mb-8">
+          Trusted by industry leaders
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center justify-items-center">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
           {logos.map((logo) => (
             <a
               key={logo.name}
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-300 transition-colors duration-200 font-semibold text-lg"
+              className="flex items-center justify-center p-4 rounded-lg hover:bg-white/5 transition-colors duration-200"
             >
-              {logo.name}
+              <span className="text-lg font-semibold text-gray-300 hover:text-white transition-colors duration-200">
+                {logo.name}
+              </span>
             </a>
           ))}
         </div>
