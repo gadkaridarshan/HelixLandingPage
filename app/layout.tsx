@@ -39,92 +39,10 @@ export default function RootLayout({
                 <a href="#get-started">Get Started</a>
               </li>
             </ul>
-            <div className="nav-actions">
-              <a href="#signin" className="btn btn-ghost">
-                Sign In
-              </a>
-              <a href="#signup" className="btn btn-primary">
-                Get Started
-              </a>
-            </div>
           </nav>
         </header>
 
-        {/* ---- Main Content ---- */}
-        <main>{children}</main>
-
-        {/* ---- Footer ---- */}
-        <footer className="site-footer">
-          <div className="container">
-            <div className="footer-grid">
-              <div className="footer-brand">
-                <a href="/" className="nav-logo" aria-label="Helix Home">
-                  <span className="nav-logo-icon" aria-hidden="true">
-                    ⚡
-                  </span>
-                  <span className="nav-logo-text">Helix</span>
-                </a>
-                <p className="footer-tagline">
-                  Orchestrate AI agents with unmatched precision.
-                </p>
-              </div>
-              <div className="footer-column">
-                <h4>Product</h4>
-                <ul>
-                  <li>
-                    <a href="#features">Features</a>
-                  </li>
-                  <li>
-                    <a href="#pricing">Pricing</a>
-                  </li>
-                  <li>
-                    <a href="#changelog">Changelog</a>
-                  </li>
-                  <li>
-                    <a href="#docs">Documentation</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="footer-column">
-                <h4>Resources</h4>
-                <ul>
-                  <li>
-                    <a href="#blog">Blog</a>
-                  </li>
-                  <li>
-                    <a href="#guides">Guides</a>
-                  </li>
-                  <li>
-                    <a href="#api">API Reference</a>
-                  </li>
-                  <li>
-                    <a href="#community">Community</a>
-                  </li>
-                </ul>
-              </div>
-              <div className="footer-column">
-                <h4>Company</h4>
-                <ul>
-                  <li>
-                    <a href="#about">About</a>
-                  </li>
-                  <li>
-                    <a href="#careers">Careers</a>
-                  </li>
-                  <li>
-                    <a href="#contact">Contact</a>
-                  </li>
-                  <li>
-                    <a href="#legal">Legal</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className="footer-bottom">
-              <p>© {new Date().getFullYear()} Helix. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
+        {children}
       </body>
     </html>
   );

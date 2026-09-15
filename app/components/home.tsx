@@ -1,7 +1,7 @@
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import HowItWorks from "./components/HowItWorks";
-import Workflow from "./components/Workflow";
+import Hero from "@/components/Hero";
+import Features from "@/components/Features";
+import HowItWorks from "@/components/HowItWorks";
+import Workflow from "@/components/Workflow";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 export default function Home() {
@@ -12,7 +12,6 @@ export default function Home() {
       <HowItWorks />
       <Workflow />
 
-      {/* CTA Section */}
       <section className="section cta-section" id="get-started">
         <div className="container">
           <div className="cta-card">
@@ -24,8 +23,7 @@ export default function Home() {
             </p>
             <div className="cta-actions">
               <a href="#signup" className="btn btn-primary">
-                Get Started{" "}
-                <ArrowRight className="btn-icon" aria-hidden="true" />
+                Get Started <ArrowRight className="btn-icon" aria-hidden="true" />
               </a>
               <a href="#demo" className="btn btn-secondary">
                 View Demo
