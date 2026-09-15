@@ -52,21 +52,24 @@ export default function LogoCloud(): ReactElement {
       className={`py-16 transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
+      aria-label="Trusted by companies"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-wider mb-8">
+        <p className="text-center text-sm font-medium text-ink-500 uppercase tracking-wider mb-8">
           Trusted by leading companies
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-8 items-center">
           {logos.map((logo) => (
             <a
               key={logo.name}
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-400 hover:text-gray-200 transition-colors font-semibold text-lg"
+              className="flex items-center justify-center h-12 text-ink-400 hover:text-ink-200 transition-colors"
             >
-              {logo.name}
+              <span className="text-lg font-semibold tracking-tight">
+                {logo.name}
+              </span>
             </a>
           ))}
         </div>

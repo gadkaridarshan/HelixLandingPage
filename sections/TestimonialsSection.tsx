@@ -1,6 +1,9 @@
 "use client";
 // @helix:story USER-870000
 
+/// <reference types="react" />
+/// <reference types="react-dom" />
+
 import { useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
 
@@ -73,30 +76,6 @@ export function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps }) {
-  return (
-    <article className="glass-card p-6 rounded-xl">
-      <StarRating rating={testimonial.rating} />
-      <blockquote className="mt-4 text-gray-300 text-sm leading-relaxed">
-        "{testimonial.quote}"
-      </blockquote>
-      <div className="mt-4 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-violet-500 flex items-center justify-center text-sm font-semibold text-white">
-          {testimonial.avatar}
-        </div>
-        <div>
-          <div className="text-gray-200 text-sm font-medium">
-            {testimonial.name}
-          </div>
-          <div className="text-gray-500 text-xs">
-            {testimonial.role}, {testimonial.company}
-          </div>
-        </div>
-      </div>
-    </article>
-  );
-}
-
 export default function TestimonialsSection() {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -123,20 +102,20 @@ export default function TestimonialsSection() {
 
   return (
     <section
-      ref={sectionRef}
       id="testimonials"
+      ref={sectionRef}
       className={`py-24 transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
+      aria-label="Testimonials"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Trusted by teams shipping AI
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            Loved by engineering teams
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            See why engineering leaders choose Helix to orchestrate their agent
-            pipelines.
+          <p className="text-ink-400 text-lg max-w-2xl mx-auto">
+            See why teams trust Helix to power their AI infrastructure.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -146,5 +125,27 @@ export default function TestimonialsSection() {
         </div>
       </div>
     </section>
+  );
+}
+
+function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps }) {
+  return (
+    <article className="glass-card p-6 rounded-xl">
+      <StarRating rating={testimonial.rating} />
+      <blockquote className="mt-4 text-gray-300 text-sm leading-relaxed">
+        "{testimonial.quote}"
+      </blockquote>
+      <div className="mt-4 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-helix-500/20 flex items-center justify-center text-helix-300 font-bold text-sm">
+          {testimonial.avatar}
+        </div>
+        <div>
+          <p className="font-medium text-sm">{testimonial.name}</p>
+          <p className="text-ink-500 text-xs">
+            {testimonial.role}, {testimonial.company}
+          </p>
+        </div>
+      </div>
+    </article>
   );
 }

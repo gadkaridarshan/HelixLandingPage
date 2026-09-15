@@ -1,11 +1,12 @@
 # Card Inventory
 
-- Sep 15, 2026, 4:42:30 PM CDT | USER-373000 | done | development | Fix Component JSX Types
-- Sep 15, 2026, 4:40:41 PM CDT | USER-651000 | done | development | Fix Layout JSX Types
-- Sep 15, 2026, 4:37:30 PM CDT | USER-1789490243741 | todo | development | Address the issue in vitest.config.ts. Details in the description
-- Sep 15, 2026, 4:35:26 PM CDT | USER-870000 | done | development | JSX Intrinsic Elements types
-- Sep 15, 2026, 4:30:52 PM CDT | USER-897000 | done | development | Fix Layout JSX Types
-- Sep 15, 2026, 4:25:24 PM CDT | HELIX-DEV-TYPES-001 | done | development | Fix TypeScript Dependencies
+- Sep 15, 2026, 5:00:40 PM CDT | USER-1789490243741 | in_progress | development | Fix vitest config types
+- Sep 15, 2026, 5:00:21 PM CDT | HELIX-FILE-VITEST-CONFIG | in_progress | development | vitest config file
+- Sep 15, 2026, 5:00:12 PM CDT | USER-651000 | done | development | Fix Layout JSX Types
+- Sep 15, 2026, 4:42:27 PM CDT | USER-373000 | done | development | Fix Component JSX Types
+- Sep 15, 2026, 4:35:24 PM CDT | USER-870000 | done | development | JSX Intrinsic Elements types
+- Sep 15, 2026, 4:30:50 PM CDT | USER-897000 | done | development | Fix Layout JSX Types
+- Sep 15, 2026, 4:25:23 PM CDT | HELIX-DEV-TYPES-001 | done | development | Fix TypeScript Dependencies
 - Sep 15, 2026, 4:19:48 PM CDT | USER-551000 | done | development | Fix Testimonials JSX Types
 - Sep 15, 2026, 4:10:11 PM CDT | VERCEL-CONFIG-ROOT | done | development | app globals d ts
 - Sep 15, 2026, 4:09:54 PM CDT | HELIX-TEST-TYPES-001 | done | testing | Test Type Error Fixes

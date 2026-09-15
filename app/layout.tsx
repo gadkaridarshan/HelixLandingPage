@@ -1,3 +1,6 @@
+/// <reference types="react" />
+/// <reference types="react/jsx-runtime" />
+/// <reference types="next" />
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";

@@ -49,17 +49,17 @@ const features: Feature[] = [
     icon: Globe,
     title: "Global Scale",
     description:
-      "Helix deploys worldwide with automatic scaling and regional failover, ensuring your agents are always online.",
+      "Helix deploys agents across 40+ edge regions with automatic failover and geographic routing.",
   },
   {
     icon: Layers,
-    title: "Multi-Agent Orchestration",
+    title: "Modular Pipelines",
     description:
-      "Compose complex systems from simple agent blocks. Route data, handle failures, and manage dependencies effortlessly.",
+      "Compose complex agent workflows from reusable, versioned pipeline blocks that your team can iterate on independently.",
   },
 ];
 
-export default function Features(): JSX.Element {
+export default function Features() {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -90,29 +90,34 @@ export default function Features(): JSX.Element {
       className={`py-24 transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
+      aria-label="Features"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Everything you need to build agent pipelines
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
+            Everything you need to ship AI agents
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            Helix provides a complete toolkit for building, deploying, and managing intelligent AI agents at scale.
+          <p className="text-ink-400 text-lg max-w-2xl mx-auto">
+            From concept to production, Helix provides the full toolkit for building
+            and operating intelligent agent systems.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <div
-                key={index}
-                className="glass-card p-6 rounded-xl hover:border-cyan-500/30 transition-all duration-300 group"
+                key={feature.title}
+                className="glass-card p-6 rounded-xl"
+                style={{
+                  transitionDelay: `${index * 100}ms`,
+                }}
               >
-                <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 transition-colors">
-                  <Icon className="w-5 h-5 text-cyan-400" />
+                <div className="w-10 h-10 rounded-lg bg-helix-500/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-helix-400" aria-hidden="true" />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-ink-400 text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>
