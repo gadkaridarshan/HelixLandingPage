@@ -1,6 +1,9 @@
 "use client";
 // @helix:story USER-344000
 
+/// <reference types="react" />
+/// <reference types="react-dom" />
+
 import { useEffect, useRef, useState, type ReactElement } from "react";
 
 interface LogoItem {
@@ -40,33 +43,30 @@ export default function LogoCloud(): ReactElement {
       observer.observe(sectionRef.current);
     }
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className={`transition-opacity duration-1000 ${visible ? "opacity-100" : "opacity-0"}`}
-      aria-label="Trusted by leading companies"
+      className={`py-16 transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <p className="text-center text-sm font-medium text-gray-400 uppercase tracking-wider mb-8">
-          Trusted by industry leaders
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <p className="text-center text-sm font-medium text-gray-500 uppercase tracking-wider mb-8">
+          Trusted by leading companies
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
           {logos.map((logo) => (
             <a
               key={logo.name}
               href={logo.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center p-4 rounded-lg hover:bg-white/5 transition-colors duration-200"
+              className="text-gray-400 hover:text-gray-200 transition-colors font-semibold text-lg"
             >
-              <span className="text-lg font-semibold text-gray-300 hover:text-white transition-colors duration-200">
-                {logo.name}
-              </span>
+              {logo.name}
             </a>
           ))}
         </div>

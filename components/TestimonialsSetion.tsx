@@ -1,8 +1,11 @@
 "use client";
-// @helix:story USER-551000
+// @helix:story USER-870000
+
+/// <reference types="react" />
+/// <reference types="react-dom" />
 
 import { useEffect, useRef, useState } from "react";
-import { Star } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface TestimonialCardProps {
   id: number;
@@ -57,7 +60,7 @@ const testimonials: TestimonialCardProps[] = [
   },
 ];
 
-export function StarRating({ rating }: { rating: number }) {
+export function StarRating({ rating }: { rating: number }): JSX.Element {
   return (
     <div className="flex gap-0.5" aria-label={`${rating} out of 5 stars`}>
       {Array.from({ length: 5 }).map((_, i) => (
@@ -73,7 +76,7 @@ export function StarRating({ rating }: { rating: number }) {
   );
 }
 
-function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps }) {
+function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps }): JSX.Element {
   return (
     <article className="glass-card p-6 rounded-xl">
       <StarRating rating={testimonial.rating} />
@@ -81,12 +84,12 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps })
         "{testimonial.quote}"
       </blockquote>
       <div className="mt-4 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-violet-500 flex items-center justify-center text-sm font-semibold text-white">
+        <div className="w-10 h-10 rounded-full bg-gray-700 flex items-center justify-center text-sm font-bold text-gray-200">
           {testimonial.avatar}
         </div>
         <div>
-          <p className="text-white font-medium text-sm">{testimonial.name}</p>
-          <p className="text-gray-400 text-xs">
+          <p className="font-medium text-sm">{testimonial.name}</p>
+          <p className="text-gray-500 text-xs">
             {testimonial.role}, {testimonial.company}
           </p>
         </div>
@@ -95,9 +98,10 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps })
   );
 }
 
-export default function TestimonialsSetion() {
+export default function TestimonialsSetion(): JSX.Element {
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -119,28 +123,55 @@ export default function TestimonialsSetion() {
     return () => observer.disconnect();
   }, []);
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const visibleTestimonials = testimonials.slice(currentIndex, Math.min(currentIndex + 3, testimonials.length));
+
   return (
     <section
+      id="testimonials"
       ref={sectionRef}
-      className={`py-24 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
+      className={`py-24 transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
-      id="testimonials"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Trusted by <span className="text-cyan-400">Teams</span> Worldwide
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Trusted by teams who ship
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            See why engineering leaders choose Helix to power their AI agent infrastructure.
+          <p className="text-gray-400 text-lg">
+            See why engineering leaders choose Helix to power their AI infrastructure.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {testimonials.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} testimonial={testimonial} />
-          ))}
+        <div className="relative">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {visibleTestimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} testimonial={testimonial} />
+            ))}
+          </div>
+          <div className="flex justify-center gap-4 mt-8">
+            <button
+              onClick={prevSlide}
+              className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+              aria-label="Previous testimonials"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-400" />
+            </button>
+            <button
+              onClick={nextSlide}
+              className="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition-colors"
+              aria-label="Next testimonials"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-400" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
