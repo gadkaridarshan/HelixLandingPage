@@ -1,169 +1,20 @@
 @import "tailwindcss";
 
-@theme {
-  --color-helix-bg: #0a0a0f;
-  --color-helix-surface: #12121a;
-  --color-helix-border: rgba(255, 255, 255, 0.06);
-  --color-helix-text: #f8fafc;
-  --color-helix-muted: #94a3b8;
-  --color-helix-accent: #8b5cf6;
-  --color-helix-accent-light: #a78bfa;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-
-@font-face {
-  font-family: "Inter";
-  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hjp-Ck5Q.woff2") format("woff2");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-helix-bg);
-  color: var(--color-helix-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #000;
+  color: #fff;
 }
 
+@helix:story USER-26000
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
+  background-color: rgba(34, 211, 238, 0.3);
   color: #fff;
-}
-
-/* ---- Section utilities ---- */
-.section {
-  padding: 80px 24px;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/* ---- CTA ---- */
-.cta-card {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12), rgba(59, 130, 246, 0.08));
-  border: 1px solid rgba(139, 92, 246, 0.15);
-  border-radius: 16px;
-  padding: 48px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-}
-
-.cta-icon {
-  width: 48px;
-  height: 48px;
-  color: #a78bfa;
-}
-
-.cta-title {
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #f8fafc;
-  margin: 0;
-}
-
-.cta-subtitle {
-  font-size: 1rem;
-  color: var(--color-helix-muted);
-  max-width: 480px;
-  margin: 0;
-  line-height: 1.6;
-}
-
-.cta-actions {
-  display: flex;
-  gap: 12px;
-  margin-top: 8px;
-}
-
-/* ---- Buttons ---- */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 28px;
-  border-radius: 10px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  cursor: pointer;
-  border: none;
-}
-
-.btn-primary {
-  background: linear-gradient(135deg, #8b5cf6, #6366f1);
-  color: #fff;
-  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4);
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
-}
-
-.btn-secondary {
-  background: rgba(255, 255, 255, 0.05);
-  color: #e2e8f0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-2px);
-}
-
-.btn-icon {
-  width: 16px;
-  height: 16px;
-}
-
-/* ---- Fade-in animation ---- */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in {
-  animation: fadeInUp 0.6s ease-out both;
-}
-
-.fade-in:nth-child(1) { animation-delay: 0.1s; }
-.fade-in:nth-child(2) { animation-delay: 0.2s; }
-.fade-in:nth-child(3) { animation-delay: 0.3s; }
-.fade-in:nth-child(4) { animation-delay: 0.4s; }
-
-/* ---- Scrollbar ---- */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0f;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #2d2d3a;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #3d3d4a;
 }
