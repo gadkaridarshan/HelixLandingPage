@@ -1,10 +1,10 @@
 # Card Inventory
 
-- Sep 15, 2026, 2:24:36 PM CDT | USER-1789478837656 | in_progress | development | Fix the error in description
-- Sep 15, 2026, 2:24:20 PM CDT | USER-802000 | done | development | Create Testimonials Section
+- Sep 15, 2026, 2:26:15 PM CDT | USER-1789478837656 | in_progress | development | Fix the error in description
+- Sep 15, 2026, 2:25:52 PM CDT | USER-925000 | done | development | Write TrustedBySection component
+- Sep 15, 2026, 2:24:48 PM CDT | USER-802000 | in_progress | development | Create Testimonials Section
 - Sep 15, 2026, 2:24:10 PM CDT | USER-1789480633846 | done | development | CSS for the first section that contains the text in the description needs fixed
 - Sep 15, 2026, 2:22:39 PM CDT | USER-753000 | done | development | Integrate Landing Page
-- Sep 15, 2026, 2:11:29 PM CDT | USER-925000 | todo | development | Create Trusted By Section
 - Sep 15, 2026, 2:00:28 PM CDT | USER-818000 | todo | development | Verify Production Build
 - Sep 15, 2026, 2:00:28 PM CDT | USER-550000 | todo | deployment | Deploy Landing Page to Vercel
 - Sep 15, 2026, 1:55:24 PM CDT | VERCEL-CONFIG-ROOT | todo | deployment | Vercel Config File
