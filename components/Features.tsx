@@ -48,9 +48,9 @@ const features = [
   },
   {
     icon: Code2,
-    title: "Developer-First SDK",
+    title: "Developer-Friendly SDK",
     description:
-      "Native SDKs for TypeScript, Python, and Go. Comprehensive documentation, CLI tooling, and example repositories to get your first agent running in under five minutes.",
+      "Manage everything through our CLI, SDK, and REST API. Infrastructure-as-code support for teams that prefer terminal-driven workflows.",
   },
 ];
 
@@ -60,8 +60,8 @@ export default function Features() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
+      (entries) => {
+        if (entries[0].isIntersecting) {
           setVisible(true);
         }
       },
@@ -76,30 +76,53 @@ export default function Features() {
   }, []);
 
   return (
-    <section ref={sectionRef as React.RefObject<HTMLDivElement>} className="section features-section" id="features">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">Features</span>
-          <h2 className="section-title">Everything you need to orchestrate AI agents</h2>
-          <p className="section-subtitle">
-            Helix provides a complete toolkit for building, deploying, and managing intelligent agent systems — from prototype to enterprise scale.
+    <section
+      id="features"
+      ref={sectionRef}
+      className="section bg-black"
+      aria-label="Features"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div
+          className={`text-center mb-16 transition-all duration-700 ${
+            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <h2 className="section-title">
+            Everything you need to build{" "}
+            <span className="text-cyan-400">agentic systems</span>
+          </h2>
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+            From prototype to production, Helix provides the full toolkit for
+            developing, deploying, and managing AI agents at scale.
           </p>
         </div>
 
-        <div className="features-grid">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className={`feature-card ${visible ? "fade-in" : ""}`}
-              style={{ transitionDelay: `${index * 80}ms` }}
-            >
-              <div className="feature-icon-wrapper">
-                <feature.icon className="feature-icon" aria-hidden="true" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div
+                key={feature.title}
+                className={`group p-6 rounded-xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-cyan-500/30 hover:bg-gray-800/40 transition-all duration-500 ${
+                  visible
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 translate-y-8"
+                }`}
+                style={{ transitionDelay: `${index * 80}ms` }}
+              >
+                <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 transition-colors">
+                  <Icon className="w-5 h-5 text-cyan-400" aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="feature-title">{feature.title}</h3>
-              <p className="feature-description">{feature.description}</p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

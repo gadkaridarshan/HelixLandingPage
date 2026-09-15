@@ -1,4 +1,4 @@
 # Fix: "use client" Directive for React Server Component Error
 
 ## Problem
-`components/Features.tsx` was missing the `"use client"` directive despite importing React hooks (`useEffect`, `useRef`, `useState`). Since `app/page.tsx` is a Server Component, importing `Features` triggered:
+Next.js build error in `components/Features.tsx`:
