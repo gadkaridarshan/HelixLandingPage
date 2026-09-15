@@ -1,5 +1,8 @@
 # Card Inventory
 
+- Sep 15, 2026, 5:15:34 PM CDT | USER-319000 | in_progress | deployment | Deploy Landing Page to Vercel
+- Sep 15, 2026, 5:15:00 PM CDT | USER-653000 | done | development | Finalize Helix Landing Page Shell
+- Sep 15, 2026, 5:13:03 PM CDT | USER-1789490243742 | in_progress | development | Fix vitest config type errors
 - Sep 15, 2026, 5:08:48 PM CDT | USER-1789490243741 | done | development | Fix vitest config types
 - Sep 15, 2026, 5:06:22 PM CDT | HELIX-FILE-VITEST-CONFIG | done | development | vitest config file
 - Sep 15, 2026, 5:00:12 PM CDT | USER-651000 | done | development | Fix Layout JSX Types
