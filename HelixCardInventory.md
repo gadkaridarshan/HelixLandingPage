@@ -1,7 +1,7 @@
 # Card Inventory
 
-- Sep 15, 2026, 2:27:08 PM CDT | USER-1789478837656 | in_progress | development | Fix the error in description
-- Sep 15, 2026, 2:26:54 PM CDT | USER-550000 | in_progress | deployment | Deploy Landing Page to Vercel
+- Sep 15, 2026, 2:27:58 PM CDT | USER-550000 | in_progress | deployment | Deploy Landing Page to Vercel
+- Sep 15, 2026, 2:27:38 PM CDT | USER-1789478837656 | done | development | Fix the error in description
 - Sep 15, 2026, 2:26:53 PM CDT | USER-802000 | done | development | Create Testimonials Section
 - Sep 15, 2026, 2:25:52 PM CDT | USER-925000 | done | development | Write TrustedBySection component
 - Sep 15, 2026, 2:24:10 PM CDT | USER-1789480633846 | done | development | CSS for the first section that contains the text in the description needs fixed

@@ -1,56 +1,51 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Brain, Network, Cpu, Layers, GitBranch, Lock, Globe, Code2 } from "lucide-react";
+import {
+  BrainCircuit,
+  ShieldCheck,
+  Zap,
+  BarChart3,
+  Globe,
+  Layers,
+} from "lucide-react";
 
 const features = [
   {
-    icon: Brain,
-    title: "Intelligent Agent Builder",
+    icon: BrainCircuit,
+    title: "Intelligent Agents",
     description:
-      "Design and train custom AI agents with a visual drag-and-drop interface or our programmatic SDK. Define goals, constraints, and knowledge sources in minutes.",
+      "Build AI agents that understand context, learn from data, and make autonomous decisions.",
   },
   {
-    icon: Network,
-    title: "Agent Collaboration",
-    description:
-      "Enable agents to communicate, share context, and delegate tasks to one another. Multi-agent orchestration that mirrors real-world team workflows.",
-  },
-  {
-    icon: Cpu,
-    title: "Real-Time Inference",
-    description:
-      "Deploy agents with sub-second inference latency. Auto-scaling infrastructure ensures consistent performance under any load, from prototype to production traffic.",
-  },
-  {
-    icon: Layers,
-    title: "Pipeline Orchestration",
-    description:
-      "Chain agents, data sources, and tools into robust pipelines. Conditional branching, parallel execution, and error recovery built in by default.",
-  },
-  {
-    icon: GitBranch,
-    title: "Version Control & Rollbacks",
-    description:
-      "Track every change to your agents and workflows. Roll back to any previous version with a single click, with full diff visibility and audit logs.",
-  },
-  {
-    icon: Lock,
+    icon: ShieldCheck,
     title: "Enterprise Security",
     description:
-      "SOC 2 compliant with end-to-end encryption, role-based access control, and private VPC deployment options. Your data never leaves your environment unless you choose otherwise.",
+      "Bank-grade encryption, role-based access, and audit trails built in from day one.",
+  },
+  {
+    icon: Zap,
+    title: "Lightning Fast",
+    description:
+      "Optimized runtime with edge deployment ensures sub-second response times globally.",
+  },
+  {
+    icon: BarChart3,
+    title: "Real-time Analytics",
+    description:
+      "Monitor agent performance, track KPIs, and gain actionable insights through dashboards.",
   },
   {
     icon: Globe,
-    title: "Global Edge Deployment",
+    title: "Global Scale",
     description:
-      "Ship agents to 40+ edge regions worldwide. Low-latency inference close to your users with automatic failover and geo-routing built into every deployment.",
+      "Deploy worldwide with automatic scaling, load balancing, and multi-region failover.",
   },
   {
-    icon: Code2,
-    title: "Developer-Friendly SDK",
+    icon: Layers,
+    title: "Composable Architecture",
     description:
-      "Manage everything through our CLI, SDK, and REST API. Infrastructure-as-code support for teams that prefer terminal-driven workflows.",
+      "Mix and match agents, workflows, and integrations to build exactly what you need.",
   },
 ];
 
@@ -63,6 +58,7 @@ export default function Features() {
       (entries) => {
         if (entries[0].isIntersecting) {
           setVisible(true);
+          observer.disconnect();
         }
       },
       { threshold: 0.1 }
@@ -79,50 +75,38 @@ export default function Features() {
     <section
       id="features"
       ref={sectionRef}
-      className="section bg-black"
-      aria-label="Features"
+      className={`py-24 transition-all duration-700 ${
+        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div
-          className={`text-center mb-16 transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <h2 className="section-title">
-            Everything you need to build{" "}
-            <span className="text-cyan-400">agentic systems</span>
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+            Everything you need to{" "}
+            <span className="text-cyan-400">ship AI agents</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            From prototype to production, Helix provides the full toolkit for
-            developing, deploying, and managing AI agents at scale.
+          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+            Helix provides a complete toolkit for building, deploying, and
+            managing intelligent agent pipelines at any scale.
           </p>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
-            return (
-              <div
-                key={feature.title}
-                className={`group p-6 rounded-xl border border-gray-800/50 bg-gray-900/30 backdrop-blur-sm hover:border-cyan-500/30 hover:bg-gray-800/40 transition-all duration-500 ${
-                  visible
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-8"
-                }`}
-                style={{ transitionDelay: `${index * 80}ms` }}
-              >
-                <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 transition-colors">
-                  <Icon className="w-5 h-5 text-cyan-400" aria-hidden="true" />
-                </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature) => (
+            <div
+              key={feature.title}
+              className="group p-8 rounded-2xl bg-gray-900/50 border border-gray-800/60 hover:border-cyan-500/30 transition-all duration-300 hover:bg-gray-800/50"
+            >
+              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                <feature.icon className="w-6 h-6 text-cyan-400" />
               </div>
-            );
-          })}
+              <h3 className="text-xl font-semibold mb-3 text-white">
+                {feature.title}
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
