@@ -81,14 +81,16 @@ function TestimonialCard({ testimonial }: { testimonial: TestimonialCardProps })
         "{testimonial.quote}"
       </blockquote>
       <div className="mt-4 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-helix-500 to-brand-violet flex items-center justify-center text-white text-xs font-bold">
+        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500 to-violet-500 flex items-center justify-center text-sm font-semibold text-white">
           {testimonial.avatar}
         </div>
         <div>
-          <p className="text-white text-sm font-medium">{testimonial.name}</p>
-          <p className="text-gray-400 text-xs">
+          <div className="text-gray-200 text-sm font-medium">
+            {testimonial.name}
+          </div>
+          <div className="text-gray-500 text-xs">
             {testimonial.role}, {testimonial.company}
-          </p>
+          </div>
         </div>
       </div>
     </article>
@@ -122,24 +124,21 @@ export default function TestimonialsSection() {
   return (
     <section
       ref={sectionRef}
-      className={`py-24 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
+      id="testimonials"
+      className={`py-24 transition-all duration-700 ${
         visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
-      id="testimonials"
-      aria-label="Testimonials"
     >
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Trusted by teams building
-            <span className="text-helix-400"> agent pipelines</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Trusted by teams shipping AI
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
-            See why engineering leaders choose Helix to orchestrate AI agents at
-            scale.
+            See why engineering leaders choose Helix to orchestrate their agent
+            pipelines.
           </p>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.id} testimonial={testimonial} />

@@ -3,11 +3,9 @@
 /// <reference types="next" />
 
 declare global {
-  namespace React {
-    namespace JSX {
-      interface IntrinsicElements {
-        [elemName: string]: any;
-      }
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
     }
   }
 }
