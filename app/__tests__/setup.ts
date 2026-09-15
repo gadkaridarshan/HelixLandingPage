@@ -1,3 +1,2 @@
-/// <reference types="react" />
-/// <reference types="next" />
+app/__tests__/setup.ts
 import "@testing-library/jest-dom";
