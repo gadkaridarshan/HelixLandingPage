@@ -1,5 +1,3 @@
-/// <reference types="next" />
-/// <reference types="react" />
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
