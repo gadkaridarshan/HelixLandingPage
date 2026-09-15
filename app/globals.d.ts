@@ -4,6 +4,12 @@
 /// <reference types="tailwindcss" />
 
 declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [elemName: string]: any;
+    }
+  }
+
   namespace React {
     namespace JSX {
       interface IntrinsicElements {
@@ -12,3 +18,5 @@ declare global {
     }
   }
 }
+
+export {};
