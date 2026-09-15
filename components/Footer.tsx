@@ -1,116 +1,103 @@
 "use client";
+// @helix:story USER-817000
 
-import { Mail, Twitter, Github, Linkedin, Sparkles } from "lucide-react";
-import type { ElementType } from "react";
+import { Sparkles, Github, Twitter, Linkedin, Youtube } from "lucide-react";
 
-interface FooterLink {
-  label: string;
-  href: string;
-}
-
-interface FooterColumn {
-  title: string;
-  links: FooterLink[];
-}
-
-const footerColumns: FooterColumn[] = [
+const footerLinks = [
   {
     title: "Product",
     links: [
       { label: "Features", href: "#features" },
       { label: "How It Works", href: "#how-it-works" },
-      { label: "Workflows", href: "#workflow" },
-      { label: "Pricing", href: "#" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Changelog", href: "#changelog" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "Documentation", href: "#" },
-      { label: "API Reference", href: "#" },
-      { label: "Changelog", href: "#" },
-      { label: "Blog", href: "#" },
+      { label: "Documentation", href: "#docs" },
+      { label: "API Reference", href: "#api" },
+      { label: "Community", href: "#community" },
+      { label: "Blog", href: "#blog" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#" },
-      { label: "Careers", href: "#" },
+      { label: "About", href: "#about" },
+      { label: "Careers", href: "#careers" },
       { label: "Contact", href: "#contact" },
-      { label: "Privacy", href: "#" },
+      { label: "Partners", href: "#partners" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { label: "Privacy", href: "#privacy" },
+      { label: "Terms", href: "#terms" },
+      { label: "Security", href: "#security" },
+      { label: "Cookies", href: "#cookies" },
     ],
   },
 ];
 
-const socialLinks: { icon: ElementType; href: string; label: string }[] = [
+const socialLinks = [
   { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Github, href: "#", label: "GitHub" },
   { icon: Linkedin, href: "#", label: "LinkedIn" },
+  { icon: Youtube, href: "#", label: "YouTube" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="footer" id="contact" aria-label="Footer">
-      <div className="footer-container">
-        <div className="footer-top">
-          <div className="footer-brand">
-            <Sparkles className="footer-brand-icon" aria-hidden="true" />
-            <span className="footer-brand-name">Helix AI Orchestrator</span>
-            <p className="footer-brand-description">
-              Build, deploy, and manage intelligent AI agent pipelines with
-              unmatched precision. Automate complex workflows, analyze real-time
-              data, and scale effortlessly.
-            </p>
-          </div>
-          <div className="footer-links">
-            {footerColumns.map((column) => (
-              <div key={column.title} className="footer-column">
-                <h4 className="footer-column-title">{column.title}</h4>
-                <ul className="footer-column-list">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <a href={link.href} className="footer-link">
-                        {link.label}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="footer-divider" />
-        <div className="footer-bottom">
-          <div className="footer-contact">
-            <Mail className="footer-contact-icon" aria-hidden="true" />
-            <a
-              href="mailto:hello@helix-ai.dev"
-              className="footer-link"
-            >
-              hello@helix-ai.dev
+    <footer className="border-t border-gray-800/50 bg-black">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12">
+          <div className="lg:col-span-2">
+            <a href="#" className="inline-flex items-center gap-2 mb-4">
+              <Sparkles className="w-6 h-6 text-helix-400" aria-hidden="true" />
+              <span className="text-xl font-bold text-white">Helix</span>
             </a>
-          </div>
-          <div className="footer-social">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
+            <p className="text-ink-500 text-sm max-w-xs">
+              Build, deploy, and manage intelligent AI agent pipelines with unmatched precision.
+            </p>
+            <div className="flex gap-4 mt-6">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
                 <a
-                  key={social.label}
-                  href={social.href}
-                  className="footer-social-link"
-                  aria-label={social.label}
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="text-ink-500 hover:text-helix-400 transition-colors"
                 >
-                  <Icon
-                    className="footer-social-icon"
-                    aria-hidden="true"
-                  />
+                  <Icon className="w-5 h-5" />
                 </a>
-              );
-            })}
+              ))}
+            </div>
           </div>
-          <p className="footer-copyright">
-            &copy; {new Date().getFullYear()} Helix AI. All rights reserved.
+          {footerLinks.map((group) => (
+            <div key={group.title}>
+              <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-4">
+                {group.title}
+              </h3>
+              <ul className="space-y-3">
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    <a
+                      href={link.href}
+                      className="text-ink-500 hover:text-helix-400 text-sm transition-colors"
+                    >
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+        <div className="border-t border-gray-800/50 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-ink-600 text-sm">
+            © {new Date().getFullYear()} Helix AI Orchestrator. All rights reserved.
           </p>
         </div>
       </div>
