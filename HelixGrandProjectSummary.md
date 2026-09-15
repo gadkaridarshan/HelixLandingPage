@@ -1,3 +1,3 @@
 # Grand Project Summary
 
-The Helix AI orchestrator marketing landing page is substantially complete, with all core sections (navigation, hero, features, how-it-works, testimonials, CTA banner, footer, active cards) built and key build errors resolved via 'use client' directives and module import fixes. However, `components/Workflow.tsx` remains uncreated (USER-189000 todo); its import was removed from `app/page.tsx` (USER-44000 done) so the page compiles cleanly without it. Vercel deployment is actively in progress (USER-806000), following a prior successful verification (USER-838000 done). Several cards are closed_incomplete (SEO metadata, dev scripts restoration, Vercel config, hero section component) and were not delivered. The project README exists at `README.md`. Per the objective, the Workflow.tsx gap was resolved by removing its import from page.tsx, but the component itself is still missing from disk.
+_Will update whenever a card moves to Done._

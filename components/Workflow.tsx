@@ -36,74 +36,73 @@ export default function Workflow() {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      [entry] => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+      (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry: IntersectionObserverEntry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+          }
+        });
       },
       { threshold: 0.15 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    const current = sectionRef.current;
+    if (current) {
+      observer.observe(current);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (current) {
+        observer.unobserve(current);
+      }
+    };
   }, []);
 
   return (
     <section
-      ref={sectionRef as React.RefObject<HTMLElement>}
-      id="workflow"
-      className="py-24 bg-gradient-to-b from-black via-gray-950 to-black"
+      ref={sectionRef}
+      className="py-24 bg-black"
       aria-label="Workflow"
+      id="workflow"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div
-          className={`text-center mb-16 transition-all duration-700 ${
+          className={`text-center mb-16 transition-all duration-1000 ${
             visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
-            Your agents,{" "}
-            <span className="text-cyan-400">working together</span>
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 tracking-tight">
+            Workflow in{" "}
+            <span className="text-cyan-400">four simple steps</span>
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
-            Helix workflows turn individual agents into coordinated teams that
-            think, plan, and execute together.
+            From connection to execution, Helix guides your agents through a
+            clear, repeatable pipeline.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {workflowSteps.map((step, index) => {
             const Icon = step.icon;
             return (
               <div
                 key={step.title}
-                className={`group relative p-6 rounded-xl border border-gray-800/50 bg-gray-900/30 hover:border-cyan-500/30 hover:bg-gray-900/50 transition-all duration-500 ${
+                className={`group p-6 rounded-2xl border border-gray-800/60 bg-gray-900/40 hover:border-cyan-500/30 hover:bg-gray-800/40 transition-all duration-700 ${
                   visible
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-8"
                 }`}
-                style={{ transitionDelay: `${(index + 1) * 100}ms` }}
+                style={{ transitionDelay: `${(index + 1) * 150}ms` }}
               >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center">
-                    <Icon
-                      className="w-5 h-5 text-cyan-400"
-                      aria-hidden="true"
-                    />
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2 group-hover:text-cyan-400 transition-colors">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {step.description}
-                    </p>
-                  </div>
+                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:bg-cyan-500/20 transition-colors">
+                  <Icon className="w-6 h-6 text-cyan-400" aria-hidden="true" />
                 </div>
+                <h3 className="text-xl font-semibold mb-3 text-white">
+                  {step.title}
+                </h3>
+                <p className="text-gray-400 leading-relaxed">
+                  {step.description}
+                </p>
               </div>
             );
           })}
