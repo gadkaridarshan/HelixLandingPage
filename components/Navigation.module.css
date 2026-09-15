@@ -1,0 +1,214 @@
+/* ---- Header ---- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  background: transparent;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.headerScrolled {
+  background: rgba(15, 15, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Nav ---- */
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+}
+
+/* ---- Logo ---- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+}
+
+.logoSpark {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: #ffffff;
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ---- Desktop Links ---- */
+.navLinks {
+  display: none;
+  list-style: none;
+  align-items: center;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navLink {
+  display: inline-block;
+  padding: 0.5rem 0.875rem;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.navLink:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ---- CTA Button ---- */
+.ctaButton {
+  display: none;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.625rem 1.25rem;
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 0.625rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ctaButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.ctaButtonIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ---- Mobile Toggle ---- */
+.mobileToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  border-radius: 0.5rem;
+  transition: background 0.2s ease;
+}
+
+.mobileToggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobileToggleIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* ---- Mobile Menu ---- */
+.mobileMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem 1.5rem;
+  background: rgba(15, 15, 30, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobileLinks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileLink {
+  display: block;
+  padding: 0.75rem 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.mobileLink:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.mobileCtaButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 0.625rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.mobileCtaButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.mobileCtaIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* ---- Responsive ---- */
+@media (min-width: 768px) {
+  .navLinks {
+    display: flex;
+  }
+
+  .ctaButton {
+    display: inline-flex;
+  }
+
+  .mobileToggle {
+    display: none;
+  }
+
+  .mobileMenu {
+    display: none;
+  }
+}
