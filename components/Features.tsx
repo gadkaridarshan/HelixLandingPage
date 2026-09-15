@@ -10,7 +10,13 @@ import {
   Layers,
 } from "lucide-react";
 
-const features = [
+interface Feature {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+}
+
+const features: Feature[] = [
   {
     icon: BrainCircuit,
     title: "Intelligent Agents",
@@ -39,13 +45,13 @@ const features = [
     icon: Globe,
     title: "Global Scale",
     description:
-      "Helix deploys worldwide with automatic scaling, load balancing, and multi-region failover.",
+      "Helix deploys worldwide with automatic scaling, load balancing, and multi-region failover support.",
   },
   {
     icon: Layers,
-    title: "Composable Architecture",
+    title: "Extensible Architecture",
     description:
-      "Helix mixes and matches agents, workflows, and integrations to build exactly what you need.",
+      "Helix plugins and modular components let you extend functionality without touching core infrastructure.",
   },
 ];
 
@@ -56,10 +62,12 @@ export default function Features() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
       },
       { threshold: 0.1 }
     );
@@ -73,40 +81,41 @@ export default function Features() {
 
   return (
     <section
-      id="features"
       ref={sectionRef}
-      className={`py-24 transition-all duration-700 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      id="features"
+      className={`py-24 transition-opacity duration-700 ${
+        visible ? "opacity-100" : "opacity-0"
       }`}
+      aria-label="Features"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
-            Everything you need to{" "}
-            <span className="text-cyan-400">ship AI agents</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Everything you need to ship AI agents
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-ink-400 text-lg max-w-2xl mx-auto">
             Helix provides a complete toolkit for building, deploying, and
-            managing intelligent agent pipelines at any scale.
+            managing intelligent agent pipelines at scale.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature) => (
-            <div
-              key={feature.title}
-              className="group p-8 rounded-2xl bg-gray-900/50 border border-gray-800/60 hover:border-cyan-500/30 transition-all duration-300 hover:bg-gray-800/50"
-            >
-              <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                <feature.icon className="w-6 h-6 text-cyan-400" />
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <div
+                key={feature.title}
+                className="bg-ink-900/50 border border-ink-800/50 rounded-xl p-6 hover:border-helix-500/30 transition-colors"
+              >
+                <div className="w-10 h-10 rounded-lg bg-helix-500/10 flex items-center justify-center mb-4">
+                  <Icon className="w-5 h-5 text-helix-400" aria-hidden="true" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
+                <p className="text-ink-400 text-sm leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-white">
-                {feature.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {feature.description}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

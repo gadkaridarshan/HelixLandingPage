@@ -1,8 +1,10 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
 
 interface TestimonialCardProps {
+  id: number;
   name: string;
   role: string;
   company: string;
@@ -11,68 +13,125 @@ interface TestimonialCardProps {
   quote: string;
 }
 
-export default function TestimonialCard({
-  name,
-  role,
-  company,
-  avatar,
-  rating,
-  quote,
-}: TestimonialCardProps) {
+const testimonials: TestimonialCardProps[] = [
+  {
+    id: 1,
+    name: "Sarah Chen",
+    role: "VP of Engineering",
+    company: "CloudScale",
+    avatar: "SC",
+    rating: 5,
+    quote:
+      "Helix transformed how we manage our AI infrastructure. Our team went from manual orchestration to fully automated agent pipelines in under two weeks.",
+  },
+  {
+    id: 2,
+    name: "Marcus Rivera",
+    role: "CTO",
+    company: "DataForge",
+    avatar: "MR",
+    rating: 5,
+    quote:
+      "The visual workflow builder is incredibly intuitive. We built complex agent dependencies that would have taken months with traditional approaches.",
+  },
+  {
+    id: 3,
+    name: "Aisha Patel",
+    role: "Head of AI",
+    company: "NeuralPath",
+    avatar: "AP",
+    rating: 5,
+    quote:
+      "Deployment and observability were seamless. Our agents are now running production workloads with 99.9% uptime.",
+  },
+  {
+    id: 4,
+    name: "James Liu",
+    role: "Engineering Lead",
+    company: "QuantumLab",
+    avatar: "JL",
+    rating: 5,
+    quote:
+      "The edge deployment model is a game-changer. We see 40% faster response times across our global user base since switching to Helix.",
+  },
+];
+
+export default function TestimonialsSection() {
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="group relative flex flex-col gap-4 p-6 rounded-2xl border border-gray-800/60 bg-gray-900/40 backdrop-blur-sm hover:border-cyan-500/30 hover:bg-gray-800/40 transition-all duration-300">
-      {/* Quote Icon */}
-      <div className="absolute top-4 right-4 opacity-10 group-hover:opacity-20 transition-opacity">
-        <svg
-          width="48"
-          height="48"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="text-cyan-400"
-        >
-          <path
-            d="M11 7.5C11 5.567 9.433 4 7.5 4C5.567 4 4 5.567 4 7.5C4 9.433 5.567 11 7.5 11C7.5 11 7.5 10.5 7.5 10C7.5 8.5 8.5 7.5 10 7.5H11V7.5ZM19 7.5C19 5.567 17.433 4 15.5 4C13.567 4 12 5.567 12 7.5C12 9.433 13.567 11 15.5 11C15.5 11 15.5 10.5 15.5 10C15.5 8.5 16.5 7.5 18 7.5H19V7.5Z"
-            fill="currentColor"
-          />
-          <path
-            d="M7.5 11C5.567 11 4 12.567 4 14.5V19C4 19.552 4.448 20 5 20H8C8.552 20 9 19.552 9 19V14.5C9 12.567 7.433 11 5.5 11H7.5ZM19 11C17.067 11 15.5 12.567 15.5 14.5V19C15.5 19.552 15.948 20 16.5 20H19.5C20.052 20 20.5 19.552 20.5 19V14.5C20.5 12.567 18.933 11 17 11H19Z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
-
-      {/* Rating */}
-      <div className="flex items-center gap-0.5">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <Star
-            key={i}
-            className={`w-4 h-4 ${
-              i < rating
-                ? "text-yellow-400 fill-yellow-400"
-                : "text-gray-700"
-            }`}
-          />
-        ))}
-      </div>
-
-      {/* Quote */}
-      <blockquote className="text-gray-300 text-base leading-relaxed">
-        &ldquo;{quote}&rdquo;
-      </blockquote>
-
-      {/* Author */}
-      <div className="flex items-center gap-3 mt-auto pt-2">
-        <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-gray-700/50 text-sm font-semibold text-cyan-300">
-          {avatar}
-        </div>
-        <div>
-          <p className="text-sm font-semibold text-white">{name}</p>
-          <p className="text-xs text-gray-500">
-            {role}, {company}
+    <section
+      ref={sectionRef}
+      id="testimonials"
+      className={`py-24 transition-opacity duration-700 ${
+        visible ? "opacity-100" : "opacity-0"
+      }`}
+      aria-label="Testimonials"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+            Loved by teams building agents
+          </h2>
+          <p className="text-ink-400 text-lg max-w-2xl mx-auto">
+            See why engineering teams trust Helix to power their AI agent
+            pipelines in production.
           </p>
         </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {testimonials.map((t) => (
+            <div
+              key={t.id}
+              className="bg-ink-900/50 border border-ink-800/50 rounded-xl p-6"
+            >
+              <div className="flex items-center gap-1 mb-4" aria-label={`${t.rating} out of 5 stars`}>
+                {Array.from({ length: t.rating }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="w-4 h-4 fill-yellow-400 text-yellow-400"
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+              <blockquote className="text-ink-200 leading-relaxed mb-6 text-sm">
+                "{t.quote}"
+              </blockquote>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-helix-500/20 flex items-center justify-center text-helix-300 text-sm font-bold">
+                  {t.avatar}
+                </div>
+                <div>
+                  <p className="font-medium text-sm">{t.name}</p>
+                  <p className="text-ink-500 text-xs">
+                    {t.role}, {t.company}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

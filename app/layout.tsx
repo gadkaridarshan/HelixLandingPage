@@ -1,4 +1,6 @@
+/// <reference types="next" />
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import "./globals.css";
 import { metadata } from "./metadata";
 
@@ -8,7 +10,7 @@ export { metadata };
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
   return (
     <html lang="en">

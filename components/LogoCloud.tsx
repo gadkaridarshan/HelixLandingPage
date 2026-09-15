@@ -2,30 +2,37 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const logos = [
-  { name: "CloudScale", initial: "CS" },
-  { name: "DataForge", initial: "DF" },
-  { name: "NeuralPath", initial: "NP" },
-  { name: "ByteStream", initial: "BS" },
-  { name: "QuantumLeap", initial: "QL" },
-  { name: "VertexAI", initial: "VA" },
-  { name: "Synapse", initial: "SY" },
-  { name: "ArcSystem", initial: "AS" },
+interface LogoItem {
+  name: string;
+  href: string;
+}
+
+const logos: LogoItem[] = [
+  { name: "CloudScale", href: "https://cloudscale.io" },
+  { name: "DataForge", href: "https://dataforge.io" },
+  { name: "NeuralPath", href: "https://neuralpath.ai" },
+  { name: "QuantumLab", href: "https://quantumlab.dev" },
+  { name: "StreamLine", href: "https://streamline.co" },
+  { name: "PixelPerfect", href: "https://pixelperfect.design" },
+  { name: "ByteBrew", href: "https://bytebrew.io" },
+  { name: "CodeCraft", href: "https://codecraft.dev" },
 ];
 
 export default function LogoCloud() {
   const [visible, setVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisible(true);
+            observer.disconnect();
+          }
+        });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -36,33 +43,31 @@ export default function LogoCloud() {
   }, []);
 
   return (
-    <div
+    <section
       ref={sectionRef}
-      className={`w-full transition-all duration-700 ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+      className={`py-16 transition-opacity duration-700 ${
+        visible ? "opacity-100" : "opacity-0"
       }`}
+      aria-label="Trusted by companies"
     >
-      <p className="text-center text-xs uppercase tracking-[0.2em] text-gray-500 mb-8 font-medium">
-        Trusted by teams at
-      </p>
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8 items-center justify-items-center">
-        {logos.map((logo, i) => (
-          <div
-            key={logo.name}
-            className={`flex items-center gap-2.5 text-gray-400 hover:text-gray-200 transition-all duration-300 cursor-default select-none ${
-              visible ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDelay: `${i * 75}ms` }}
-          >
-            <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-gray-800/60 border border-gray-700/50 text-xs font-bold text-cyan-400">
-              {logo.initial}
-            </div>
-            <span className="text-sm font-semibold tracking-wide whitespace-nowrap">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className="text-sm font-medium text-ink-500 uppercase tracking-wider mb-8">
+          Trusted by leading teams
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          {logos.map((logo) => (
+            <a
+              key={logo.name}
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-ink-400 hover:text-ink-200 transition-colors text-lg font-semibold"
+            >
               {logo.name}
-            </span>
-          </div>
-        ))}
+            </a>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
