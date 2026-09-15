@@ -37,68 +37,63 @@ export default function Navigation() {
           <span className={styles.logoText}>Helix</span>
         </a>
 
-        {/* ---- Desktop Links ---- */}
-        <ul className={styles.navLinks} role="menubar">
-          {navLinks.map((link) => (
-            <li key={link.label} role="none">
-              <a href={link.href} className={styles.navLink} role="menuitem">
-                {link.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
-        {/* ---- CTA + Mobile Toggle ---- */}
-        <div className={styles.actions}>
-          <a href="#signup" className={styles.ctaButton}>
-            Get Started
-            <ArrowRight className={styles.ctaIcon} aria-hidden="true" />
-          </a>
-          <button
-            className={styles.menuButton}
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-expanded={mobileOpen}
-            aria-controls="mobile-menu"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          >
-            {mobileOpen ? (
-              <X className={styles.menuIcon} />
-            ) : (
-              <Menu className={styles.menuIcon} />
-            )}
-          </button>
-        </div>
-      </nav>
-
-      {/* ---- Mobile Menu ---- */}
-      <div
-        id="mobile-menu"
-        className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ""}`}
-      >
-        <ul className={styles.mobileLinks}>
+        {/* ---- Desktop Nav ---- */}
+        <ul className={styles.navLinks}>
           {navLinks.map((link) => (
             <li key={link.label}>
-              <a
-                href={link.href}
-                className={styles.mobileLink}
-                onClick={() => setMobileOpen(false)}
-              >
+              <a href={link.href} className={styles.navLink}>
                 {link.label}
               </a>
             </li>
           ))}
           <li>
-            <a
-              href="#signup"
-              className={styles.mobileCta}
-              onClick={() => setMobileOpen(false)}
-            >
+            <a href="#signup" className={styles.ctaButton}>
               Get Started
-              <ArrowRight className={styles.ctaIcon} aria-hidden="true" />
+              <ArrowRight
+                className={styles.btnIcon}
+                aria-hidden="true"
+              />
             </a>
           </li>
         </ul>
-      </div>
+
+        {/* ---- Mobile Toggle ---- */}
+        <button
+          className={styles.mobileToggle}
+          onClick={() => setMobileOpen(!mobileOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+        >
+          {mobileOpen ? (
+            <X className={styles.mobileToggleIcon} />
+          ) : (
+            <Menu className={styles.mobileToggleIcon} />
+          )}
+        </button>
+      </nav>
+
+      {/* ---- Mobile Menu ---- */}
+      {mobileOpen && (
+        <div className={styles.mobileMenu}>
+          {navLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              className={styles.mobileLink}
+              onClick={() => setMobileOpen(false)}
+            >
+              {link.label}
+            </a>
+          ))}
+          <a
+            href="#signup"
+            className={styles.mobileCta}
+            onClick={() => setMobileOpen(false)}
+          >
+            Get Started
+          </a>
+        </div>
+      )}
     </header>
   );
 }

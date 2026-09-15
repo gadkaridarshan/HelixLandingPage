@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Navigation from "@/components/Navigation";
 
 export const metadata: Metadata = {
   title: "Helix AI Orchestrator",
@@ -16,32 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* ---- Navigation ---- */}
-        <header className="site-header">
-          <nav className="nav" aria-label="Main navigation">
-            <a href="/" className="nav-logo" aria-label="Helix Home">
-              <span className="nav-logo-icon" aria-hidden="true">
-                ⚡
-              </span>
-              <span className="nav-logo-text">Helix</span>
-            </a>
-            <ul className="nav-links">
-              <li>
-                <a href="#features">Features</a>
-              </li>
-              <li>
-                <a href="#how-it-works">How It Works</a>
-              </li>
-              <li>
-                <a href="#workflow">Workflow</a>
-              </li>
-              <li>
-                <a href="#get-started">Get Started</a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-
+        <Navigation />
         {children}
       </body>
     </html>

@@ -1,5 +1,14 @@
+"use client";
+
 import { useEffect, useRef, useState } from "react";
-import { MessageSquare, Workflow, Rocket, TrendingUp } from "lucide-react";
+import {
+  MessageSquare,
+  Workflow,
+  Rocket,
+  TrendingUp,
+  ChevronRight,
+} from "lucide-react";
+import styles from "./HowItWorks.module.css";
 
 const steps = [
   {
@@ -37,9 +46,10 @@ export default function HowItWorks() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setVisible(true);
+          observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
 
     if (sectionRef.current) {
@@ -50,38 +60,60 @@ export default function HowItWorks() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="section how-it-works-section" id="how-it-works">
+    <section
+      ref={sectionRef}
+      className="section"
+      id="how-it-works"
+      aria-label="How It Works"
+    >
       <div className="container">
-        <div className="section-header">
-          <span className="section-label">How It Works</span>
-          <h2 className="section-title">From concept to production in four steps</h2>
+        {/* ---- Section Header ---- */}
+        <div
+          className={`${styles.sectionHeader} ${visible ? styles.visible : ""}`}
+        >
+          <span className="section-badge">How It Works</span>
+          <h2 className="section-title">Four steps to intelligent automation</h2>
           <p className="section-subtitle">
-            Helix simplifies the entire lifecycle of AI agent deployment — no complex infrastructure required.
+            From concept to production — Helix guides your agents from idea to
+            impact in four simple stages.
           </p>
         </div>
 
-        <div className="steps-container">
-          <div className={`steps-line ${visible ? "animate" : ""}`} aria-hidden="true" />
+        {/* ---- Steps ---- */}
+        <div className={styles.stepsContainer}>
+          {/* Vertical Line */}
+          <div className={styles.verticalLine} aria-hidden="true" />
 
-          {steps.map((step, index) => (
-            <div
-              key={index}
-              className={`step-row ${visible ? "fade-in" : ""} step-${index % 2 === 0 ? "left" : "right"}`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="step-node">
-                <div className="step-icon-wrapper">
-                  <step.icon className="step-icon" aria-hidden="true" />
+          {steps.map((step, index) => {
+            const Icon = step.icon;
+            const isEven = index % 2 === 1;
+            return (
+              <div
+                key={index}
+                className={`${styles.step} ${visible ? styles.visible : ""} ${isEven ? styles.stepReverse : ""}`}
+                style={{ transitionDelay: `${index * 150}ms` }}
+              >
+                <div className={styles.stepContent}>
+                  <div className={styles.stepIcon}>
+                    <Icon size={24} strokeWidth={1.5} />
+                  </div>
+                  <div className={styles.stepText}>
+                    <span className={styles.stepNumber}>
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className={styles.stepTitle}>{step.title}</h3>
+                    <p className={styles.stepDescription}>{step.description}</p>
+                  </div>
                 </div>
-                <span className="step-number">{index + 1}</span>
-              </div>
 
-              <div className="step-content-card">
-                <h3 className="step-title">{step.title}</h3>
-                <p className="step-description">{step.description}</p>
+                {index < steps.length - 1 && (
+                  <div className={styles.stepArrow} aria-hidden="true">
+                    <ChevronRight size={20} />
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

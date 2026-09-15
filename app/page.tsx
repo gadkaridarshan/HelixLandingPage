@@ -30,7 +30,7 @@ export default function Home() {
                 <ArrowRight className="btn-icon" aria-hidden="true" />
               </a>
               <a href="#demo" className="btn btn-secondary">
-                View Demo
+                Schedule a Demo
               </a>
             </div>
           </div>
