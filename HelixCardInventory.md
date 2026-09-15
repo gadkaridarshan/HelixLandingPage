@@ -1,10 +1,12 @@
 # Card Inventory
 
-- Sep 15, 2026, 5:19:48 PM CDT | USER-1789490243742 | in_progress | development | Fix vitest config type errors
-- Sep 15, 2026, 5:19:46 PM CDT | USER-319000 | in_progress | deployment | Deploy Landing Page to Vercel
-- Sep 15, 2026, 5:15:00 PM CDT | USER-653000 | done | development | Finalize Helix Landing Page Shell
-- Sep 15, 2026, 5:08:48 PM CDT | USER-1789490243741 | done | development | Fix vitest config types
-- Sep 15, 2026, 5:06:22 PM CDT | HELIX-FILE-VITEST-CONFIG | done | development | vitest config file
+- Sep 15, 2026, 5:25:32 PM CDT | USER-319000 | in_progress | deployment | Deploy Landing Page to Vercel
+- Sep 15, 2026, 5:24:57 PM CDT | USER-1789490243742 | done | development | Fix vitest config type errors
+- Sep 15, 2026, 5:23:18 PM CDT | USER-TEST-VITEST-CONFIG | in_progress | testing | Verify vitest config fixes
+- Sep 15, 2026, 5:22:55 PM CDT | USER-1789492973045 | todo | development | Stop deleting npm run dev from package.json. Recover it now
+- Sep 15, 2026, 5:14:57 PM CDT | USER-653000 | done | development | Finalize Helix Landing Page Shell
+- Sep 15, 2026, 5:08:46 PM CDT | USER-1789490243741 | done | development | Fix vitest config types
+- Sep 15, 2026, 5:06:19 PM CDT | HELIX-FILE-VITEST-CONFIG | done | development | vitest config file
 - Sep 15, 2026, 5:00:12 PM CDT | USER-651000 | done | development | Fix Layout JSX Types
 - Sep 15, 2026, 4:42:27 PM CDT | USER-373000 | done | development | Fix Component JSX Types
 - Sep 15, 2026, 4:35:24 PM CDT | USER-870000 | done | development | JSX Intrinsic Elements types

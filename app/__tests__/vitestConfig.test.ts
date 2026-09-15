@@ -2,7 +2,12 @@ import { describe, it, expect } from "vitest";
 import config from "../vitest.config";
 
 describe("vitest.config.ts", () => {
-  it("should export a config with jsdom environment", () => {
+  it("should export a config object", () => {
+    expect(config).toBeDefined();
+    expect(typeof config).toBe("object");
+  });
+
+  it("should configure jsdom environment", () => {
     expect(config.test.environment).toBe("jsdom");
   });
 
@@ -25,5 +30,10 @@ describe("vitest.config.ts", () => {
 
   it("should exclude node_modules from coverage", () => {
     expect(config.test.coverage.exclude).toContain("node_modules/");
+  });
+
+  it("should include react plugin", () => {
+    expect(config.plugins).toBeDefined();
+    expect(config.plugins.length).toBeGreaterThan(0);
   });
 });
